@@ -1,12 +1,14 @@
 {
   "name": "vietbui",
-  "version": "0.0.0","scripts": {
+  "version": "0.0.0",
+  "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build --aot --prod",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --prod"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +20,8 @@
     "@angular/platform-browser": "~10.0.6",
     "@angular/platform-browser-dynamic": "~10.0.6",
     "@angular/router": "~10.0.6",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
@@ -41,5 +45,9 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.9.5"
+  },
+  "engines": {
+    "node": "~v12.16.3",
+    "npm": "~6.14.4"
   }
 }

@@ -1,24 +1,14 @@
 const express = require('express');
 const path = require('path');
-const favicon = require('serve-favicon');
 const app = express();
 
-const forceSSL = function () {
-  return function (req, res, next) {
-    if (req.headers['x-forwarded-proto'] !== 'https') {
-      return res.redirect(
-        ['https://', req.get('Host'), req.url].join('')
-      );
-    }
-    next();
-  }
-};
-app.use(express.static('./dist/{{vietbui}}'));
+// Serve static files....
+app.use(express.static(__dirname + '/dist/vietbui'));
 
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname,'/dist/{{vietbui}}/index.html'));
+// Send all requests to index.html
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/vietbui/index.html'));
 });
 
-app.use(forceSSL());
-
-app.listen(process.env.PORT || 8080);
+// default Heroku PORT
+app.listen(process.env.PORT || 3000);
