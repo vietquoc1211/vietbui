@@ -45,7 +45,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'builder',
-				loadChildren: 'app/views/pages/builder/builder.module#BuilderModule'
+				loadChildren: 'app/views/theme/content/builder/builder.module#BuilderModule'
 			},
 			{
 				path: 'error/403',
