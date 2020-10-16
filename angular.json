@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "vietbui"
+    }
+  },
+  "defaultProject": "vietbui",
+  "cli": {
+    "analytics": false
+  }
 }
