@@ -8,8 +8,8 @@ import {ErrorPageComponent} from './views/theme/content/error-page/error-page.co
 import {AuthGuard} from './core/auth';
 
 const routes: Routes = [
-	{path: 'auth', loadChildren: () => import('app/views/pages/auth/auth.module').then(m => m.AuthModule)},
-
+	{path: 'auth',
+	'loadChildren': 'app\/views\/pages\/auth\/auth.module#AuthModule'},
 	{
 		path: '',
 		component: BaseComponent,
@@ -17,35 +17,35 @@ const routes: Routes = [
 		children: [
 			{
 				path: 'dashboard',
-				loadChildren: () => import('app/views/pages/dashboard/dashboard.module').then(m => m.DashboardModule),
+				'loadChildren': 'app\/views\/pages\/dashboard\/dashboard.module#DashboardModule'
 			},
 			{
 				path: 'mail',
-				loadChildren: () => import('app/views/pages/apps/mail/mail.module').then(m => m.MailModule),
+				'loadChildren': 'app\/views\/pages\/apps\/mail\/mail.module#MailModule'
 			},
 			{
 				path: 'ecommerce',
-				loadChildren: () => import('app/views/pages/apps/e-commerce/e-commerce.module').then(m => m.ECommerceModule),
+				'loadChildren': 'app\/views\/pages\/apps\/e-commerce\/e-commerce.module#ECommerceModule'
 			},
 			{
 				path: 'ngbootstrap',
-				loadChildren: () => import('app/views/pages/ngbootstrap/ngbootstrap.module').then(m => m.NgbootstrapModule),
+				'loadChildren': 'app\/views\/pages\/ngbootstrap\/ngbootstrap.module#NgbootstrapModule'
 			},
 			{
 				path: 'material',
-				loadChildren: () => import('app/views/pages/material/material.module').then(m => m.MaterialModule),
+				'loadChildren': 'app\/views\/pages\/material\/material.module#MaterialModule'
 			},
 			{
 				path: 'user-management',
-				loadChildren: () => import('app/views/pages/user-management/user-management.module').then(m => m.UserManagementModule),
+				'loadChildren': 'app\/views\/pages\/user-management\/user-management.module#UserManagementModule'
 			},
 			{
 				path: 'wizard',
-				loadChildren: () => import('app/views/pages/wizard/wizard.module').then(m => m.WizardModule),
+				'loadChildren': 'app\/views\/pages\/wizard\/wizard.module#WizardModule'
 			},
 			{
 				path: 'builder',
-				loadChildren: () => import('app/views/theme/content/builder/builder.module').then(m => m.BuilderModule),
+				'loadChildren': 'app\/views\/theme\/content\/builder\/builder.module#BuilderModule'
 			},
 			{
 				path: 'error/403',
