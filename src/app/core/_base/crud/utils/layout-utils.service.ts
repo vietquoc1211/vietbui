@@ -1,12 +1,6 @@
 // Angular
 import { Injectable } from '@angular/core';
 import { MatSnackBar, MatDialog } from '@angular/material';
-// Partials for CRUD
-import { ActionNotificationComponent,
-	DeleteEntityDialogComponent,
-	FetchEntityDialogComponent,
-	UpdateStatusDialogComponent
-} from '../../../../views/partials/content/crud';
 
 export enum MessageType {
 	Create,
@@ -56,11 +50,7 @@ export class LayoutUtilsService {
 			type: _type,
 			action: 'Undo'
 		};
-		return this.snackBar.openFromComponent(ActionNotificationComponent, {
-			duration: _duration,
-			data: _data,
-			verticalPosition: _verticalPosition
-		});
+		return null;
 	}
 
 	/**
@@ -71,10 +61,7 @@ export class LayoutUtilsService {
 	 * @param waitDesciption: string
 	 */
 	deleteElement(title: string = '', description: string = '', waitDesciption: string = '') {
-		return this.dialog.open(DeleteEntityDialogComponent, {
-			data: { title, description, waitDesciption },
-			width: '440px'
-		});
+		return null;
 	}
 
 	/**
@@ -83,10 +70,7 @@ export class LayoutUtilsService {
 	 * @param _data: any
 	 */
 	fetchElements(_data) {
-		return this.dialog.open(FetchEntityDialogComponent, {
-			data: _data,
-			width: '400px'
-		});
+		return null;
 	}
 
 	/**
@@ -97,9 +81,6 @@ export class LayoutUtilsService {
 	 * @param messages: string[]
 	 */
 	updateStatusForEntities(title, statuses, messages) {
-		return this.dialog.open(UpdateStatusDialogComponent, {
-			data: { title, statuses, messages },
-			width: '480px'
-		});
+		return null;
 	}
 }
