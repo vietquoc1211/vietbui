@@ -20,6 +20,10 @@ const routes: Routes = [
 				'loadChildren': 'app\/pages\/dashboard\/dashboard.module#DashboardModule'
 			},
 			{
+				path: 'my-page',
+				'loadChildren': 'app\/pages\/my-page\/my-page.module#MyPageModule'
+			},
+			{
 				path: 'error/403',
 				component: ErrorPageComponent,
 				data: {

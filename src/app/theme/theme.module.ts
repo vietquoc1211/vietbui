@@ -36,53 +36,61 @@ import { HtmlClassService } from './html-class.service';
 import { HeaderMobileComponent } from './header/header-mobile/header-mobile.component';
 import { ErrorPageComponent } from './content/error-page/error-page.component';
 import { PermissionEffects, permissionsReducer, RoleEffects, rolesReducer } from '../core/auth';
+import { ScrollTopComponent } from './scroll-top/scroll-top.component';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { SplashScreenComponent } from './splash-screen/splash-screen.component';
+import {  CartComponent } from './topbar/cart/cart.component';
+import { LanguageSelectorComponent } from './topbar/language-selector/language-selector.component';
+import { NotificationComponent}  from './topbar/notification/notification.component';
+import { QuickActionComponent } from './topbar/quick-action/quick-action.component';
+import { SearchDefaultComponent } from './topbar/search-default/search-default.component';
+import { SearchDropdownComponent } from './topbar/search-dropdown/search-dropdown.component';
+import { UserProfileComponent } from './topbar/user-profile/user-profile.component';
 
 @NgModule({
 	declarations: [
 		BaseComponent,
 		FooterComponent,
-
-		// headers
 		HeaderComponent,
 		BrandComponent,
 		HeaderMobileComponent,
-
-		// subheader
 		SubheaderComponent,
-
-		// topbar components
 		TopbarComponent,
-
-		// aside left menu components
 		AsideLeftComponent,
-
-		// horizontal menu components
 		MenuHorizontalComponent,
-
 		ErrorPageComponent,
+		ScrollTopComponent,
+		SearchResultComponent,
+		SplashScreenComponent,
+		CartComponent,
+		LanguageSelectorComponent,
+		NotificationComponent,
+		QuickActionComponent,
+		SearchDefaultComponent,
+		SearchDropdownComponent,
+		UserProfileComponent
 	],
 	exports: [
 		BaseComponent,
 		FooterComponent,
-
-		// headers
 		HeaderComponent,
 		BrandComponent,
 		HeaderMobileComponent,
-
-		// subheader
 		SubheaderComponent,
-
-		// topbar components
 		TopbarComponent,
-
-		// aside left menu components
 		AsideLeftComponent,
-
-		// horizontal menu components
 		MenuHorizontalComponent,
-
 		ErrorPageComponent,
+		ScrollTopComponent,
+		SearchResultComponent,
+		SplashScreenComponent,
+		CartComponent,
+		LanguageSelectorComponent,
+		NotificationComponent,
+		QuickActionComponent,
+		SearchDefaultComponent,
+		SearchDropdownComponent,
+		UserProfileComponent
 	],
 	providers: [
 		HtmlClassService,
@@ -106,8 +114,6 @@ import { PermissionEffects, permissionsReducer, RoleEffects, rolesReducer } from
 		LoadingBarModule,
 		NgxDaterangepickerMd,
 		InlineSVGModule,
-
-		// ng-bootstrap modules
 		NgbProgressbarModule,
 		NgbTooltipModule,
 	]

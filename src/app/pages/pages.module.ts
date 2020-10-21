@@ -5,10 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 // Pages
 import { CoreModule } from '../core/core.module';
-import { MyPageComponent } from './my-page/my-page.component';
 
 @NgModule({
-	declarations: [MyPageComponent],
+	declarations: [],
 	exports: [],
 	imports: [
 		CommonModule,
