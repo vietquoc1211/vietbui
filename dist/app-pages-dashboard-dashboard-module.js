@@ -1,31 +1,31 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["app-views-pages-dashboard-dashboard-module"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["app-pages-dashboard-dashboard-module"],{
 
-/***/ "./node_modules/raw-loader/index.js!./src/app/views/pages/dashboard/dashboard.component.html":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/raw-loader!./src/app/views/pages/dashboard/dashboard.component.html ***!
-  \******************************************************************************************/
+/***/ "./node_modules/raw-loader/index.js!./src/app/pages/dashboard/dashboard.component.html":
+/*!************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/pages/dashboard/dashboard.component.html ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n\t<div class=\"col-xl-6\">\n\t\t<div class=\"row row-full-height\">\n\t\t\t<div class=\"col-sm-12 col-md-12 col-lg-6\">\n\t\t\t\t<kt-portlet [class]=\"'kt-portlet--height-fluid-half kt-portlet--border-bottom-brand'\">\n\t\t\t\t\t<kt-portlet-body [class]=\"'kt-portlet__body--fluid'\">\n\t\t\t\t\t\t<kt-widget26 [value]=\"570\" [desc]=\"'Total Sales'\" [options]=\"chartOptions1\"></kt-widget26>\n\t\t\t\t\t</kt-portlet-body>\n\t\t\t\t</kt-portlet>\n\n\t\t\t\t<div class=\"kt-space-20\"></div>\n\n\t\t\t\t<kt-portlet [class]=\"'kt-portlet--height-fluid-half kt-portlet--border-bottom-brand'\">\n\t\t\t\t\t<kt-portlet-body [class]=\"'kt-portlet__body--fluid'\">\n\t\t\t\t\t\t<kt-widget26 [value]=\"640\" [desc]=\"'Completed Transactions'\" [options]=\"chartOptions2\"></kt-widget26>\n\t\t\t\t\t</kt-portlet-body>\n\t\t\t\t</kt-portlet>\n\t\t\t</div>\n\n\t\t\t<div class=\"col-sm-12 col-md-12 col-lg-6\">\n\t\t\t\t<kt-portlet [class]=\"'kt-portlet--height-fluid-half kt-portlet--border-bottom-brand'\">\n\t\t\t\t\t<kt-portlet-body [class]=\"'kt-portlet__body--fluid'\">\n\t\t\t\t\t\t<kt-widget26 [value]=\"'234+'\" [desc]=\"'Transactions'\" [options]=\"chartOptions3\"></kt-widget26>\n\t\t\t\t\t</kt-portlet-body>\n\t\t\t\t</kt-portlet>\n\n\t\t\t\t<div class=\"kt-space-20\"></div>\n\n\t\t\t\t<kt-portlet [class]=\"'kt-portlet--height-fluid-half kt-portlet--border-bottom-brand'\">\n\t\t\t\t\t<kt-portlet-body [class]=\"'kt-portlet__body--fluid'\">\n\t\t\t\t\t\t<kt-widget26 [value]=\"'4.4M$'\" [desc]=\"'Paid Comissions'\" [options]=\"chartOptions4\"></kt-widget26>\n\t\t\t\t\t</kt-portlet-body>\n\t\t\t\t</kt-portlet>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"col-xl-6\">\n\t\t<kt-portlet [class]=\"'kt-portlet--height-fluid'\">\n\t\t\t<kt-portlet-header [title]=\"'Order Statistics'\">\n\t\t\t\t<ng-container ktPortletTools>\n\t\t\t\t\t<kt-context-menu2></kt-context-menu2>\n\t\t\t\t</ng-container>\n\t\t\t</kt-portlet-header>\n\t\t\t<kt-portlet-body>\n\t\t\t\t<kt-widget12></kt-widget12>\n\t\t\t</kt-portlet-body>\n\t\t</kt-portlet>\n\t</div>\n</div>\n\n\n<kt-portlet>\n\t<kt-portlet-body [class]=\"'kt-portlet__body--fit'\">\n\t\t<div class=\"row row-no-padding row-col-separator-xl\">\n\t\t\t<div class=\"col-xl-4\">\n\t\t\t\t<kt-widget1></kt-widget1>\n\t\t\t</div>\n\t\t\t<div class=\"col-xl-4\">\n\t\t\t\t<kt-widget14 [title]=\"'Daily Sales'\" [desc]=\"'Check out each collumn for more details'\"></kt-widget14>\n\t\t\t</div>\n\t\t\t<div class=\"col-xl-4\">\n\t\t\t\t<kt-widget14 [title]=\"'Revenue Change'\" [desc]=\"'Revenue change breakdown by cities'\"></kt-widget14>\n\t\t\t</div>\n\t\t</div>\n\t</kt-portlet-body>\n</kt-portlet>\n\n\n<div class=\"row\">\n\t<div class=\"col-xl-4\">\n\t\t<kt-portlet [class]=\"'kt-portlet--height-fluid'\">\n\t\t\t<kt-portlet-header [title]=\"'Download Files'\">\n\t\t\t\t<ng-container ktPortletTools>\n\t\t\t\t\t<kt-context-menu2></kt-context-menu2>\n\t\t\t\t</ng-container>\n\t\t\t</kt-portlet-header>\n\t\t\t<kt-portlet-body>\n\t\t\t\t<kt-widget4 [data]=\"widget4_1\">\n\t\t\t\t\t<ng-template #actionTemplate let-item=\"item\">\n\t\t\t\t\t\t<div class=\"kt-widget4__tools\">\n\t\t\t\t\t\t\t<a href=\"javascript:;\" class=\"btn btn-clean btn-icon btn-sm\">\n\t\t\t\t\t\t\t\t<i class=\"flaticon2-download-symbol-of-down-arrow-in-a-rectangle\"></i>\n\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ng-template>\n\t\t\t\t</kt-widget4>\n\t\t\t</kt-portlet-body>\n\t\t</kt-portlet>\n\t</div>\n\t<div class=\"col-xl-4\">\n\t\t<kt-portlet [class]=\"'kt-portlet--height-fluid'\">\n\t\t\t<kt-portlet-header [title]=\"'New Users'\">\n\t\t\t\t<ng-container ktPortletTools>\n\t\t\t\t\t<kt-context-menu2></kt-context-menu2>\n\t\t\t\t</ng-container>\n\t\t\t</kt-portlet-header>\n\t\t\t<kt-portlet-body>\n\t\t\t\t<kt-widget4 [data]=\"widget4_2\">\n\t\t\t\t\t<ng-template #actionTemplate let-item=\"item\">\n\t\t\t\t\t\t<a href=\"javascript:;\" class=\"btn btn-sm\" [ngClass]=\"item.buttonClass\">Follow</a>\n\t\t\t\t\t</ng-template>\n\t\t\t\t</kt-widget4>\n\t\t\t</kt-portlet-body>\n\t\t</kt-portlet>\n\t</div>\n\t<div class=\"col-xl-4\">\n\t\t<kt-portlet [class]=\"'kt-portlet--height-fluid'\">\n\t\t\t<kt-portlet-header [title]=\"'Latest Updates'\">\n\t\t\t\t<ng-container ktPortletTools>\n\t\t\t\t\t<kt-context-menu2></kt-context-menu2>\n\t\t\t\t</ng-container>\n\t\t\t</kt-portlet-header>\n\t\t\t<kt-portlet-body>\n\t\t\t\t<kt-widget4 [data]=\"widget4_3\">\n\t\t\t\t\t<ng-template #actionTemplate let-item=\"item\">\n\t\t\t\t\t\t<span class=\"kt-widget4__number\" [ngClass]=\"item.valueColor\">{{item.value}}</span>\n\t\t\t\t\t</ng-template>\n\t\t\t\t</kt-widget4>\n\t\t\t</kt-portlet-body>\n\t\t</kt-portlet>\n\t</div>\n</div>\n\n\n<div class=\"row\">\n\t<div class=\"col-xl-8\">\n\t\t<kt-portlet [class]=\"'kt-portlet--height-fluid'\">\n\t\t\t<kt-portlet-header [title]=\"'Exclusive Datatable'\" [class]=\"'kt-portlet__head--lg kt-portlet__head--noborder kt-portlet__head--break-sm'\">\n\t\t\t\t<ng-container ktPortletTools>\n\t\t\t\t\t<kt-context-menu></kt-context-menu>\n\t\t\t\t</ng-container>\n\t\t\t</kt-portlet-header>\n\t\t\t<kt-portlet-body [class]=\"'kt-portlet__body--fit'\">\n\t\t\t\t<kt-data-table></kt-data-table>\n\t\t\t</kt-portlet-body>\n\t\t</kt-portlet>\n\t</div>\n\t<div class=\"col-xl-4\">\n\t\t<kt-portlet [class]=\"'kt-portlet--height-fluid'\">\n\t\t\t<kt-portlet-header [title]=\"'Authors Profit'\">\n\t\t\t\t<ng-container ktPortletTools>\n\t\t\t\t\t<kt-context-menu2></kt-context-menu2>\n\t\t\t\t</ng-container>\n\t\t\t</kt-portlet-header>\n\t\t\t<kt-portlet-body>\n\t\t\t\t<kt-widget4 [data]=\"widget4_4\">\n\t\t\t\t\t<ng-template #actionTemplate let-item=\"item\">\n\t\t\t\t\t\t<span class=\"kt-widget4__number\" [ngClass]=\"item.valueColor\">{{item.value}}</span>\n\t\t\t\t\t</ng-template>\n\t\t\t\t</kt-widget4>\n\t\t\t</kt-portlet-body>\n\t\t</kt-portlet>\n\t</div>\n</div>\n\n\n<div class=\"row\">\n\t<div class=\"col-xl-8\">\n\t\t<kt-portlet [class]=\"'kt-portlet--height-fluid'\">\n\t\t\t<kt-portlet-header [title]=\"'Best Sellers'\">\n\t\t\t\t<ng-container ktPortletTools>\n\t\t\t\t\t<kt-context-menu2></kt-context-menu2>\n\t\t\t\t</ng-container>\n\t\t\t</kt-portlet-header>\n\t\t\t<kt-portlet-body>\n\t\t\t\t<kt-widget5></kt-widget5>\n\t\t\t</kt-portlet-body>\n\t\t</kt-portlet>\n\t</div>\n\t<div class=\"col-xl-4\">\n\t\t<kt-portlet [class]=\"'kt-portlet--height-fluid'\">\n\t\t\t<kt-portlet-header [title]=\"'Recent Activities'\">\n\t\t\t\t<ng-container ktPortletTools>\n\t\t\t\t\t<kt-context-menu2></kt-context-menu2>\n\t\t\t\t</ng-container>\n\t\t\t</kt-portlet-header>\n\t\t\t<kt-portlet-body>\n\t\t\t\t<kt-timeline2></kt-timeline2>\n\t\t\t</kt-portlet-body>\n\t\t</kt-portlet>\n\t</div>\n</div>\n\n\n<!--\n<kt-portlet>\n\t<kt-portlet-header>\n\t\t<ng-container ktPortletTitle>\n\t\t</ng-container>\n\t\t<ng-container ktPortletTools>\n\t\t</ng-container>\n\t</kt-portlet-header>\n\t<kt-portlet-body></kt-portlet-body>\n\t<kt-portlet-footer></kt-portlet-footer>\n</kt-portlet>\n-->\n"
+module.exports = "<h1>\n\tĐây là trang chủ\n</h1>\n"
 
 /***/ }),
 
-/***/ "./src/app/views/pages/dashboard/dashboard.component.scss":
-/*!****************************************************************!*\
-  !*** ./src/app/views/pages/dashboard/dashboard.component.scss ***!
-  \****************************************************************/
+/***/ "./src/app/pages/dashboard/dashboard.component.scss":
+/*!**********************************************************!*\
+  !*** ./src/app/pages/dashboard/dashboard.component.scss ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host ::ng-deep ngb-tabset > .nav-tabs {\n  display: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvdmlld3MvcGFnZXMvZGFzaGJvYXJkL0Q6XFxNeVNvdXJjZVxcdmlldGJ1aS9zcmNcXGFwcFxcdmlld3NcXHBhZ2VzXFxkYXNoYm9hcmRcXGRhc2hib2FyZC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUdHLGFBQWEsRUFBQSIsImZpbGUiOiJzcmMvYXBwL3ZpZXdzL3BhZ2VzL2Rhc2hib2FyZC9kYXNoYm9hcmQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyI6aG9zdCB7XG5cdDo6bmctZGVlcCB7XG5cdFx0bmdiLXRhYnNldCA+IC5uYXYtdGFicyB7XG5cdFx0XHRkaXNwbGF5OiBub25lO1xuXHRcdH1cblx0fVxufVxuIl19 */"
+module.exports = ":host ::ng-deep ngb-tabset > .nav-tabs {\n  display: none; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvZGFzaGJvYXJkL0Q6XFxNeVNvdXJjZVxcdmlldGJ1aS9zcmNcXGFwcFxccGFnZXNcXGRhc2hib2FyZFxcZGFzaGJvYXJkLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBR0csYUFBYSxFQUFBIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvZGFzaGJvYXJkL2Rhc2hib2FyZC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcblx0OjpuZy1kZWVwIHtcblx0XHRuZ2ItdGFic2V0ID4gLm5hdi10YWJzIHtcblx0XHRcdGRpc3BsYXk6IG5vbmU7XG5cdFx0fVxuXHR9XG59XG4iXX0= */"
 
 /***/ }),
 
-/***/ "./src/app/views/pages/dashboard/dashboard.component.ts":
-/*!**************************************************************!*\
-  !*** ./src/app/views/pages/dashboard/dashboard.component.ts ***!
-  \**************************************************************/
+/***/ "./src/app/pages/dashboard/dashboard.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/pages/dashboard/dashboard.component.ts ***!
+  \********************************************************/
 /*! exports provided: DashboardComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -36,7 +36,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _core_base_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../core/_base/layout */ "./src/app/core/_base/layout/index.ts");
+/* harmony import */ var _core_base_layout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../core/_base/layout */ "./src/app/core/_base/layout/index.ts");
 
 // Angular
 
@@ -224,8 +224,8 @@ var DashboardComponent = /** @class */ (function () {
     DashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'kt-dashboard',
-            template: __webpack_require__(/*! raw-loader!./dashboard.component.html */ "./node_modules/raw-loader/index.js!./src/app/views/pages/dashboard/dashboard.component.html"),
-            styles: [__webpack_require__(/*! ./dashboard.component.scss */ "./src/app/views/pages/dashboard/dashboard.component.scss")]
+            template: __webpack_require__(/*! raw-loader!./dashboard.component.html */ "./node_modules/raw-loader/index.js!./src/app/pages/dashboard/dashboard.component.html"),
+            styles: [__webpack_require__(/*! ./dashboard.component.scss */ "./src/app/pages/dashboard/dashboard.component.scss")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_core_base_layout__WEBPACK_IMPORTED_MODULE_3__["LayoutConfigService"]])
     ], DashboardComponent);
@@ -236,10 +236,10 @@ var DashboardComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/views/pages/dashboard/dashboard.module.ts":
-/*!***********************************************************!*\
-  !*** ./src/app/views/pages/dashboard/dashboard.module.ts ***!
-  \***********************************************************/
+/***/ "./src/app/pages/dashboard/dashboard.module.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/pages/dashboard/dashboard.module.ts ***!
+  \*****************************************************/
 /*! exports provided: DashboardModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -250,16 +250,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _core_core_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../core/core.module */ "./src/app/core/core.module.ts");
-/* harmony import */ var _partials_partials_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../partials/partials.module */ "./src/app/views/partials/partials.module.ts");
-/* harmony import */ var _dashboard_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dashboard.component */ "./src/app/views/pages/dashboard/dashboard.component.ts");
+/* harmony import */ var _core_core_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../core/core.module */ "./src/app/core/core.module.ts");
+/* harmony import */ var _dashboard_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dashboard.component */ "./src/app/pages/dashboard/dashboard.component.ts");
 
 // Angular
 
 
 
 // Core Module
-
 
 
 var DashboardModule = /** @class */ (function () {
@@ -269,18 +267,17 @@ var DashboardModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"],
-                _partials_partials_module__WEBPACK_IMPORTED_MODULE_5__["PartialsModule"],
                 _core_core_module__WEBPACK_IMPORTED_MODULE_4__["CoreModule"],
                 _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild([
                     {
                         path: '',
-                        component: _dashboard_component__WEBPACK_IMPORTED_MODULE_6__["DashboardComponent"]
+                        component: _dashboard_component__WEBPACK_IMPORTED_MODULE_5__["DashboardComponent"]
                     },
                 ]),
             ],
             providers: [],
             declarations: [
-                _dashboard_component__WEBPACK_IMPORTED_MODULE_6__["DashboardComponent"],
+                _dashboard_component__WEBPACK_IMPORTED_MODULE_5__["DashboardComponent"],
             ]
         })
     ], DashboardModule);
@@ -292,4 +289,4 @@ var DashboardModule = /** @class */ (function () {
 /***/ })
 
 }]);
-//# sourceMappingURL=app-views-pages-dashboard-dashboard-module.js.map
+//# sourceMappingURL=app-pages-dashboard-dashboard-module.js.map
