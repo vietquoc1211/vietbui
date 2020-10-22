@@ -30,7 +30,9 @@ import { AppComponent } from './app.component';
 // Modules
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
-import { ThemeModule } from './theme/theme.module';
+import { ThemeModule } from './views/theme/theme.module';
+// Partials
+import { PartialsModule } from './views/partials/partials.module';
 // Layout Services
 import {
 	DataTableService,
@@ -46,7 +48,7 @@ import {
 	SubheaderService
 } from './core/_base/layout';
 // Auth
-import { AuthModule } from './pages/auth/auth.module';
+import { AuthModule } from './views/pages/auth/auth.module';
 import { AuthService } from './core/auth';
 // CRUD
 import { HttpUtilsService, LayoutUtilsService, TypesUtilsService } from './core/_base/crud';
@@ -97,6 +99,7 @@ export function hljsLanguages(): HighlightLanguage[] {
 			dataEncapsulation: false
 		}) : [],
 		NgxPermissionsModule.forRoot(),
+		PartialsModule,
 		CoreModule,
 		OverlayModule,
 		StoreModule.forRoot(reducers, {metaReducers}),

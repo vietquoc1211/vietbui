@@ -1,0 +1,33 @@
+<form class="m-form" [formGroup]="formdata" autocomplete="off">
+	<table cellspacing="0" class="example-full-width" style="width: 360px;">
+		<tbody>
+			<tr>
+				<td>
+					<mat-form-field style="width: 100px;">
+						<input matInput DateMask formControlName="ctrlfromDate" [matDatepicker]="fromdate"
+							[max]="formdata.controls.ctrltoDate.value?.toDate()">
+						<mat-datepicker-toggle matSuffix [for]="fromdate"></mat-datepicker-toggle>
+						<mat-datepicker #fromdate startView="multi-year"
+							(yearSelected)="chosenYearHandler_fromdate($event)"
+							(monthSelected)="chosenMonthHandler_fromdate($event, fromdate)"></mat-datepicker>
+					</mat-form-field>
+				</td>
+				<td style="width: 80px; text-align: center">
+					<i>đến ngày</i>
+				</td>
+				<td>
+					<mat-form-field style="width: 100px;">
+						<input matInput DateMask formControlName="ctrltoDate" [matDatepicker]="todate"
+							[min]="formdata.controls.ctrlfromDate.value?.toDate()">
+						<mat-datepicker-toggle matSuffix [for]="todate"></mat-datepicker-toggle>
+						<mat-datepicker #todate startView="multi-year" (yearSelected)="chosenYearHandler_todate($event)"
+							(monthSelected)="chosenMonthHandler_todate($event, todate)"></mat-datepicker>
+					</mat-form-field>
+				</td>
+				<td style="width: 100px; text-align: right">
+					<a class="btn btn-accent" (click)="emiter()" href="javascript:;">Xem</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</form>

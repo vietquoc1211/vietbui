@@ -2,14 +2,13 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 // Components
-import {BaseComponent} from './theme/base/base.component';
-import {ErrorPageComponent} from './theme/content/error-page/error-page.component';
+import {BaseComponent} from './views/theme/base/base.component';
+import {ErrorPageComponent} from './views/theme/content/error-page/error-page.component';
 // Auth
 import {AuthGuard} from './core/auth';
 
 const routes: Routes = [
-	{path: 'auth',
-	'loadChildren': 'app\/pages\/auth\/auth.module#AuthModule'},
+	{path: 'auth', 'loadChildren':'app/views/pages/auth/auth.module#AuthModule' },
 	{
 		path: '',
 		component: BaseComponent,
@@ -17,11 +16,11 @@ const routes: Routes = [
 		children: [
 			{
 				path: 'dashboard',
-				'loadChildren': 'app\/pages\/dashboard\/dashboard.module#DashboardModule'
+				'loadChildren': 'app/views/pages/dashboard/dashboard.module#DashboardModule',
 			},
 			{
-				path: 'my-page',
-				'loadChildren': 'app\/pages\/my-page\/my-page.module#MyPageModule'
+				path: 'mail',
+				'loadChildren': 'app/views/pages/apps/mail/mail.module#MailModule',
 			},
 			{
 				path: 'error/403',

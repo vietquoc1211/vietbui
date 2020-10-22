@@ -1,0 +1,75 @@
+<div class="kt-subheader kt-grid__item kt-subheader-baocao">
+	<div class="kt-subheader__main">
+		<h3 class="kt-subheader__title ng-star-inserted">{{title}}</h3><span
+			class="kt-subheader__separator kt-subheader__separator--v"></span>
+		<div class="btn-group">
+			<a class="btn btn-secondary " id="dropdowntuychonloai" data-toggle="dropdown" href="javascript:;" style="width: 90px;">Theo
+				ngày</a>
+			<div class="daterangepicker dropdown-menu ltr dropdown-menu-left" aria-labelledby="dropdowntuychonloai"
+				x-placement="top-start">
+				<div class="ranges">
+					<ul>
+						<li data-key='Date' class='active' (click)="changeloai($event)">Theo ngày</li>
+						<li data-key='Month' (click)="changeloai($event)">Theo tháng</li>
+						<li data-key='Year' (click)="changeloai($event)">Theo Năm</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<form  *ngIf="Loai=='Date'" class="m-form" [formGroup]="formdata" autocomplete="off">
+			<table cellspacing="0" class="example-full-width" style="width: 360px;">
+				<tbody>
+					<tr>
+						<td>
+							<mat-form-field style="width: 100px;">
+								<input matInput DateMask formControlName="ctrlfromDate" [matDatepicker]="fromdate"
+									[max]="formdata.controls.ctrltoDate.value">
+								<mat-datepicker-toggle matSuffix [for]="fromdate"></mat-datepicker-toggle>
+								<mat-datepicker #fromdate></mat-datepicker>
+							</mat-form-field>
+						</td>
+						<td style="width: 80px; text-align: center">
+							<i>đến ngày</i>
+						</td>
+						<td>
+							<mat-form-field style="width: 100px;">
+								<input matInput DateMask formControlName="ctrltoDate" [matDatepicker]="todate"
+									[min]="formdata.controls.ctrlfromDate.value">
+								<mat-datepicker-toggle matSuffix [for]="todate"></mat-datepicker-toggle>
+								<mat-datepicker #todate></mat-datepicker>
+							</mat-form-field>
+						</td>
+						<td style="width: 100px; text-align: right">
+							<a class="btn btn-accent" (click)="emiter()" href="javascript:;">Xem</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		<header-baocao-month *ngIf="Loai=='Month'" (changedate)="componentchangedate($event)"></header-baocao-month>
+		<header-baocao-year *ngIf="Loai=='Year'" (changedate)="componentchangedate($event)"></header-baocao-year>
+	</div>
+	<div class="kt-subheader__toolbar" *ngIf="Loai=='Date'">
+		<div class="kt-subheader__wrapper">
+			<a class="btn btn-secondary" data-key='today' (click)="change($event)" href="javascript:;">Hôm nay</a>
+			<a class="btn btn-secondary" data-key='thismonth' (click)="change($event)" href="javascript:;">Tháng này</a>
+			<div class="btn-group">
+				<a class="btn btn-secondary " id="dropdowntuychon" data-toggle="dropdown" href="javascript:;">Tùy
+					chọn</a>
+				<div class="daterangepicker dropdown-menu ltr dropdown-menu-right" aria-labelledby="dropdowntuychon"
+					x-placement="top-start">
+					<div class="ranges">
+						<ul>
+							<li data-key='today' (click)="change($event)">Hôm nay</li>
+							<li data-key='yesterday' (click)="change($event)">Hôm qua</li>
+							<li data-key='last7days' (click)="change($event)">7 ngày trước</li>
+							<li data-key='last30days' (click)="change($event)">30 ngày trước</li>
+							<li data-key='thismonth' (click)="change($event)">Tháng này</li>
+							<li data-key='lastmonth' (click)="change($event)">Tháng trước</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
