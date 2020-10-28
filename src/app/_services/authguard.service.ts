@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { UrlConstants } from '../_commons/UrlConstants';
-import { SystemConstants } from '../_commons/SystemConstants';
+import { UrlConstants } from '../_common/UrlConstants';
+import { SystemConstants } from '../_common/SystemConstants';
 import { isNullOrUndefined } from 'util';
 @Injectable()
 export class AuthGuardService implements CanActivate {

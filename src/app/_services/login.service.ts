@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import { UrlConstants } from '../_commons/UrlConstants';
-import { SystemConstants } from '../_commons/SystemConstants';
+import { UrlConstants } from '../_common/UrlConstants';
+import { SystemConstants } from '../_common/SystemConstants';
 import { isNullOrUndefined } from 'util';
 import * as moment from 'moment';
 import { Observable } from 'rxjs/Observable';
@@ -58,6 +58,10 @@ export class LoginService {
         if(data!=null)
         {
             const appsetting=JSON.parse(data.appsetting);
+            SystemConstants.CoTamUng=appsetting.CoTamUng=="1"||false;
+            SystemConstants.CoKho=appsetting.CoKho=="1"||false;
+            // SystemConstants.CoTamUng=false;
+            // SystemConstants.CoKho=false;
         }
     }
 }

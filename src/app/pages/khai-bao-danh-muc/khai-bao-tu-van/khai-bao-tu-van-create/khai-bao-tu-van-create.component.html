@@ -1,0 +1,39 @@
+<form class="m-form" #form="ngForm" [formGroup]="formdata">
+    <h2 mat-dialog-title>{{const_data.TuVanID?'Sửa tư vấn: '+const_data.TenTuVan:'Thêm mới tư vấn / ' + data.name}}</h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="content-dialog">
+            <div *ngIf="isLoading" class="dialog-loading-shade">
+                <mat-spinner></mat-spinner>
+            </div>
+            <div class="m-portlet__body">
+                <select-custom [Title]="'Loại tư vấn'" [Control]="formdata.controls.LoaiTuVanID"
+                    [Api]="'/api/dmloaituvan/getselect'" [DefaultValue]="const_data.LoaiTuVanID">
+                    <ng-template #itemTemplate let-item="item">
+                        {{item.text}}
+                    </ng-template>
+                </select-custom>
+                <mat-form-field>
+                    <input formControlName="TenTuVan" matInput placeholder="Tên tư vấn" autocomplete="off" required>
+                    <mat-error *ngIf="formdata.controls['TenTuVan'].errors?.required">{{vali_const.ms_required}}
+                    </mat-error>
+                    <mat-error *ngIf="formdata.controls['TenTuVan'].errors?.maxlength">{{vali_const.ms_textlength}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <textarea formControlName="GhiChu" rows="3" style="resize: none" matInput
+                        placeholder="Ghi chú"></textarea>
+                </mat-form-field>
+                <p>
+                    <mat-checkbox formControlName="Lock">Khóa hoạt động</mat-checkbox>
+                </p>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button mat-dialog-close><i class="la la-close"></i> Thoát</button>
+        <button mat-raised-button [disabled]="isLoading" (click)="resetForm(form);" color="accent">
+            <i class="la la-refresh"></i> Tải lại</button>
+        <button mat-raised-button [disabled]="isLoading" [loader]="issave" (click)="savedata(formdata.value)"
+            color="primary"><i class="la la-save"></i> Lưu</button>
+    </mat-dialog-actions>
+</form>

@@ -1,0 +1,67 @@
+<h2 mat-dialog-title>
+    <span *ngIf="parent.AppPageID">{{parent.Name}}/</span>
+    {{const_data.Id?'Sửa trang: '+const_data.Name:'Thêm mới trang'}}</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="content-dialog">
+        <div *ngIf="isLoading" class="dialog-loading-shade">
+            <mat-spinner></mat-spinner>
+        </div>
+        <form class="m-form" [formGroup]="formdata">
+            <div class="m-portlet__body">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <mat-form-field class="example-full-width">
+                            <input formControlName="Icon" matInput placeholder="Icon">
+                            <mat-error *ngIf="formdata.controls['Icon'].errors?.maxlength">
+                                {{vali_const.ms_textlength}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-xl-12">
+                        <mat-form-field class="example-full-width">
+                            <input formControlName="Name" matInput placeholder="Tên trang*">
+                            <mat-error *ngIf="formdata.controls['Name'].errors?.required">{{vali_const.ms_required}}
+                            </mat-error>
+                            <mat-error
+                                *ngIf="formdata.controls['Name'].errors?.maxlength||formdata.controls['Name'].errors?.minlength">
+                                {{vali_const.ms_textlength}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-xl-12">
+                        <mat-form-field class="example-full-width">
+                            <input formControlName="Url" matInput placeholder="Url*">
+                            <mat-error *ngIf="formdata.controls['Url'].errors?.pattern">
+                                Từ 3 đến 250 ký tự (A->Z, 0->9)
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-xl-12">
+                        <select-multiple-custom #vcChucNang [panelClass]="'select-multiple'"
+                            [Title]="'Các chức năng trong trang'" [Control]="chucnang"
+                            [Api]="'/api/appfunction/getselect'">
+                            <ng-template #itemTemplate let-item="item">
+                                {{item.text}}
+                            </ng-template>
+                        </select-multiple-custom>
+                    </div>
+                    <div class="col-xl-12">
+                        <p>
+                            <mat-checkbox formControlName="Section">Section</mat-checkbox>
+                        </p>
+                        <p>
+                            <mat-checkbox formControlName="Hide">Ẩn</mat-checkbox>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close><i class="la la-close"></i> Thoát</button>
+    <button mat-raised-button [disabled]="isLoading" (click)="loaddata()" color="accent">
+        <i class="la la-refresh"></i> Tải lại</button>
+    <button mat-raised-button [disabled]="isLoading" [loader]="issave" (click)="savedata(formdata.value)"
+        color="primary"><i class="la la-save"></i> Lưu</button>
+</mat-dialog-actions>

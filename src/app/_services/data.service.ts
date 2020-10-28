@@ -4,12 +4,12 @@ import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { UrlConstants } from '../_commons/UrlConstants';
-import { MessageConstants } from '../_commons/MessageConstants';
+import { UrlConstants } from '../_common/UrlConstants';
+import { MessageConstants } from '../_common/MessageConstants';
 import { Observable } from 'rxjs/Observable';
 import { isNull, isNullOrUndefined } from 'util';
 import { FormGroup, Validators } from '@angular/forms';
-import { SystemConstants } from '../_commons/SystemConstants';
+import { SystemConstants } from '../_common/SystemConstants';
 
 declare var $: any;
 
@@ -407,7 +407,7 @@ export class DataService {
           this._Toastr.error(ms);
         }
         else if (typeof str == 'object') {
-
+          
           if(isNullOrUndefined(str.ExceptionMessage))
             this._Toastr.error(MessageConstants.SERVE_ERROR_MSG);
           else

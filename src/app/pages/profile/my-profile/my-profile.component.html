@@ -1,0 +1,205 @@
+<div class="containers">
+  <div class="row">
+    <div class="content-left-avatar_ col-md-4">
+      <div class="content-background-avatar_">
+        <img class="background-profile-avatar-img_"
+          src="https://images.pexels.com/photos/1020315/pexels-photo-1020315.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          alt="avatar" />
+        <div class="avatar-border-center-content_">
+          <img src="{{ URL }}{{ const_data.Anh }}" alt="thanos" class="avatar_" />
+          <button mat-icon-button class="icon-edit-avatar_" for="uploadavatar" (click)="file.click($event)">
+            <mat-icon aria-label="icon">edit</mat-icon>
+          </button>
+        </div>
+        <input type="file" name="..." (change)="updateAvatar($event)" #file id="uploadavatar" accept=".jpg,.jpeg,.png"
+          style="display: none" />
+      </div>
+
+      <mat-card class="content-info-avatar-user_ main-left-info-avatar_">
+        <div class="main-left_avatar_">
+          <h3>
+            <b>{{ const_data.HoTen }}</b>
+          </h3>
+          <h3>
+            <b>{{ const_data.ChucVu }}</b>
+          </h3>
+        </div>
+        <hr />
+        <section class="padding-main-info-avatar_">
+          <p>
+            <b>Ngày sinh: </b> {{ const_data.NgaySinh | date: "dd/MM/yyyy" }}
+          </p>
+          <p>
+            <b>Giới tính: </b> {{ const_data.GioiTinh == 1 ? "Nam  " : "Nữ  " }}
+            <i *ngIf="const_data.GioiTinh == 1" class="fa fa-mars" style="color: rgb(56, 6, 236);;"></i>
+            <i *ngIf="const_data.GioiTinh == 2" class="fa fa-venus" style="color: deeppink"></i>
+          </p>
+          <p><b>Ngày tạo: </b>{{ const_data.NgayTao | date: "dd/MM/yyyy" }}</p>
+        </section>
+      </mat-card>
+      <hr />
+      <mat-card>
+        <h4>Thông tin liên hệ</h4>
+        <hr />
+        <div>
+          <p *ngIf="const_data.SDT">
+            <b><i class="fa fa-phone"></i> : </b> {{ const_data.SDT }}
+          </p>
+          <p *ngIf="const_data.Email">
+            <b><i class="fa fa-envelope"></i> : </b> {{ const_data.Email }}
+          </p>
+          <p *ngIf="const_data.DiaChi">
+            <b><i class="fa fa-map-o"></i> : </b> {{ const_data.DiaChi }}
+          </p>
+        </div>
+      </mat-card>
+    </div>
+    <div class="content-right-main_ col-md-8">
+      <mat-card>
+        <mat-tab-group #tabGroup (selectedTabChange)="tabChanged($event)">
+          <mat-tab label="Thông tin cá nhân">
+            <div class="content-mat-card-info-profile_">
+              <form class="m-form" [formGroup]="formdata" #formtiepdon autocomplete="off">
+                <div class="row">
+                  <mat-form-field class="col-sm-3">
+                    <input matInput formControlName="HoTen" placeholder="Họ tên" />
+                    <mat-error *ngIf="formdata.controls.HoTen.errors?.required">
+                      {{ vali_const.ms_required }}
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="col-sm-3">
+                    <input matInput DateMask [matDatepicker]="dp3" formControlName="NgaySinh" placeholder="Ngày sinh" />
+                    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                    <mat-datepicker #dp3></mat-datepicker>
+                    <mat-error *ngIf="formdata.controls.NgaySinh.errors?.required">
+                      {{ vali_const.ms_required }}
+                    </mat-error>
+                    <mat-error *ngIf="formdata.controls.NgaySinh.errors?.pattern">
+                      {{ vali_const.ms_ngay }}
+                    </mat-error>
+                  </mat-form-field>
+                  <select-custom class="col-sm-3" [Title]="'Giới tính'" [Control]="formdata.controls.GioiTinh"
+                    [Data]="sys_const.data_gioitinh" [HideSearch]="true" [DefaultValue]="const_data.GioiTinh">
+                    <ng-template #itemTemplate let-item="item">
+                      {{ item.text }}
+                    </ng-template>
+                  </select-custom>
+                  <mat-form-field class="col-sm-3">
+                    <input formControlName="SDT" matInput placeholder="Điện thoại" />
+                    <mat-error *ngIf="formdata.controls['SDT'].errors?.required">{{ vali_const.ms_required }}
+                    </mat-error>
+                    <mat-error *ngIf="formdata.controls['SDT'].errors?.pattern">
+                      9 đến 15 ký tự (0->9)
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="row">
+                  <mat-form-field class="col-sm-3">
+                    <input formControlName="Email" matInput placeholder="Email" autocomplete="off" />
+                    <mat-error *ngIf="formdata.controls['Email'].errors?.required">{{ vali_const.ms_required }}
+                    </mat-error>
+                    <mat-error *ngIf="formdata.controls['Email'].errors?.pattern">
+                      {{ vali_const.ms_pattern }}
+                    </mat-error>
+                  </mat-form-field>
+                  <select-custom class="col-sm-3" [Title]="'Tỉnh thành'" [Control]="formdata.controls['MaTinhThanh']"
+                    [Api]="'/api/dmtinhthanh/getselect'" (SelectChange)="changetinhthanh($event)"
+                    [DefaultValue]="const_data.MaTinhThanh">
+                    <ng-template #itemTemplate let-item="item">
+                      {{ item.text }}
+                    </ng-template>
+                  </select-custom>
+                  <select-custom class="col-sm-3" [Title]="'Quận huyện'" [Control]="formdata.controls['MaQuanHuyen']"
+                    [Api]="'/api/dmquanhuyen/getselect'" [FilterBefore]="beforeQH"
+                    [DefaultValue]="const_data.MaQuanHuyen" (SelectChange)="changequanhuyen($event)">
+                    <ng-template #itemTemplate let-item="item">
+                      {{ item.text }}
+                    </ng-template>
+                  </select-custom>
+                  <select-custom [Title]="'Phường xã'" [Control]="formdata.controls['MaPhuongXa']" class="col-sm-3"
+                    [Api]="'/api/dmxaphuong/getselect'" [FilterBefore]="beforePX" [DefaultValue]="const_data.MaPhuongXa"
+                    (SelectChange)="changephuongxa($event)">
+                    <ng-template #itemTemplate let-item="item">
+                      {{ item.text }}
+                    </ng-template>
+                  </select-custom>
+                </div>
+                <div class="row">
+                  <mat-form-field class="col-sm-12">
+                    <textarea rows="2" style="resize: none" matInput formControlName="DiaChi"
+                      placeholder="Địa chỉ"></textarea>
+                  </mat-form-field>
+                </div>
+                <div class="btn-save-form_">
+                  <button mat-raised-button color="primary" (click)="ChangeForm(formdata.value)"
+                    style="margin-right: 15px;">
+                    <i class="la la-save"></i> Lưu
+                  </button>
+                  <button type="button" mat-raised-button (click)="reload()">
+                    <i class="la la-refresh"></i> Tải lại
+                  </button>
+                </div>
+              </form>
+            </div>
+          </mat-tab>
+          <mat-tab label="Mật khẩu">
+            <div class="content-mat-card-password_">
+              <form class="m-form" #formPass="ngForm" [formGroup]="formdataPassword" autocomplete="off">
+                <mat-form-field class="col-sm-4">
+                  <input [type]="hidepasscurrent ? 'password' : 'text'" formControlName="CurrentPassword" matInput
+                    placeholder="Mật khẩu" autocomplete="off" />
+                  <mat-error *ngIf="
+                      formdataPassword.controls['CurrentPassword'].errors
+                        ?.required
+                    ">
+                    {{ vali_const.ms_required }}
+                  </mat-error>
+                  <mat-error *ngIf="formdataPassword.hasError('notSame')">
+                    Nhập lại mật khẩu không đúng
+                  </mat-error>
+                  <mat-icon matSuffix (click)="hidepasscurrent = !hidepasscurrent">
+                    {{
+                      hidepassconfirm ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                </mat-form-field>
+                <mat-form-field class="col-sm-4">
+                  <input [type]="hidepassnew ? 'password' : 'text'" formControlName="Password" matInput
+                    placeholder="Mật khẩu mới" autocomplete="off" />
+                  <mat-error *ngIf="formdataPassword.controls.Password.errors?.required">{{ vali_const.ms_required }}
+                  </mat-error>
+                  <mat-error *ngIf="formdataPassword.controls.Password.errors?.pattern">{{ vali_const.ms_pattern }}
+                  </mat-error>
+                  <mat-icon matSuffix (click)="hidepassnew = !hidepassnew">
+                    {{ hidepassnew ? "visibility_off" : "visibility" }}
+                  </mat-icon>
+                </mat-form-field>
+                <mat-form-field class="col-sm-4">
+                  <input [type]="hidepassconfirm ? 'password' : 'text'" formControlName="confirmPassword" matInput
+                    placeholder="Nhập lại mật khẩu" [errorStateMatcher]="matcher" autocomplete="off" />
+                  <mat-error *ngIf="
+                      formdataPassword.controls['confirmPassword'].errors
+                        ?.required
+                    ">
+                    {{ vali_const.ms_required }}
+                  </mat-error>
+                  <mat-error *ngIf="formdataPassword.hasError('notSame')">
+                    Nhập lại mật khẩu không đúng
+                  </mat-error>
+                  <mat-icon matSuffix (click)="hidepassconfirm = !hidepassconfirm">
+                    {{
+                      hidepassconfirm ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                </mat-form-field>
+                <div class="btn-save-form_">
+                  <button mat-raised-button color="primary" (click)="ChangePassword(formdataPassword.value)">
+                    Thay đổi mật khẩu
+                  </button>
+                </div>
+              </form>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card>
+    </div>
+  </div>
+</div>

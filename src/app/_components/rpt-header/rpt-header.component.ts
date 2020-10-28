@@ -1,7 +1,7 @@
 import { Component, Input, NgModule, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DataService } from '../../_services/data.service';
-import { UrlConstants } from '../../_commons/UrlConstants';
+import { DataService } from 'src/app/_services/data.service';
+import { UrlConstants } from 'src/app/_common/UrlConstants';
 import { NgxBarcodeModule } from 'ngx-barcode';
 @Component({
   selector: 'rpt-header',
@@ -67,7 +67,7 @@ import { NgxBarcodeModule } from 'ngx-barcode';
               font-size: 11px;
               font-style: italic;
             }
-            #print-bottom img{
+            #print-bottom img{  
               height: 14px;
               }
   `]

@@ -1,0 +1,84 @@
+<div class="row">
+    <div class="col-xl-12">
+        <div class="m-portlet">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text"> Danh sách ngày hẹn </h3>
+                    </div>
+                </div>
+                <div class="m-portlet__head-tools">
+                    <ul class="m-portlet__nav">
+                        <li class="m-portlet__nav-item">
+                            <button type="button" (click)="opendialog()" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
+                                    <i class="la la-plus"></i>Mới
+                                </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="m-portlet__body">
+                <div class="m-form">
+                    <div class="portlet-loading-shade" *ngIf="isLoading">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <div class="m-form__filtration">
+                        <div class="row align-items-center">
+                            <div class="col-md-3 m--margin-bottom-10-mobile">
+                                <mat-form-field class="select-margin-right-20">
+                                    <input matInput class="example-right-align" (keyup)="_data.mattable_filter($event.target.value,dataSource)" placeholder="Tìm kiếm">
+                                    <mat-icon matSuffix>search</mat-icon>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mat-table__wrapper">
+                    <mat-table [dataSource]="dataSource" matSort>
+                        <ng-container matColumnDef="ID">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.ID}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="SoNgay">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Số ngày </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.SoNgay}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Ten">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Tên </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.Ten}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="Lock">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Khóa </mat-header-cell>
+                            <mat-cell *matCellDef="let row">
+                                <span *ngIf="row.Lock" class="m--font-bold m--font-danger">Khóa</span>
+                            </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="ThaoTao">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> Thao tác </mat-header-cell>
+                            <mat-cell class="control1_table flex-icon-material-table" *matCellDef="let row">
+                                <button (click)="opendialog(row.ID)" class="btn m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill m-btn--air" type="button" title="sửa">
+                                        <mat-icon class="icon-table-up-down_">edit</mat-icon>
+                                    </button>
+                                <button (click)="delete(row)" class="btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill m-btn--air" type="button" title="xóa">
+                                        <mat-icon class="icon-table-up-down_">delete</mat-icon>
+                                    </button>
+                                <button (click)="move(row.ID,true)" class="btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill m-btn--air" type="button" title="Chuyển lên">
+                                        <mat-icon class="icon-table-up-down_">arrow_upward</mat-icon>
+                                    </button>
+                                <button (click)="move(row.ID)" class="btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill m-btn--air" type="button" title="Chuyển xuống">
+                                        <mat-icon class="icon-table-up-down_">arrow_downward</mat-icon>
+                                    </button>
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;">
+                        </mat-row>
+                    </mat-table>
+                </div>
+                <div class="mat-table__bottom">
+                    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25,50,100]"></mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

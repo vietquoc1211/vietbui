@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-xl-12">
+    <div class="m-portlet m-portlet--ngviewer">
+      <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+          <div class="m-portlet__head-title">
+            <h3 class="m-portlet__head-text"> Phân quyền </h3>
+          </div>
+        </div>
+      </div>
+      <div class="m-portlet__body m-portlet__body--no-padding">
+        <div class="m-portlet__preview">
+          <div class="table-loading-shade" *ngIf="isLoading">
+            <mat-spinner></mat-spinner>
+          </div>
+          <div class="m-form__filtration">
+            <div class="row align-items-center">
+              <div class="col-md-4 m--margin-bottom-10-mobile">
+                <mat-form-field>
+                  <mat-select placeholder="Chọn quyền" [formControl]="rolecontrol" required
+                              (selectionChange)="loaddata()">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let item of rolelist" [value]="item.Id">
+                      {{item.Name}}: {{item.Description}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="rolecontrol.hasError('required')">Chưa chọn quyền</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-2 m--margin-bottom-10-mobile">
+                <button mat-raised-button [disabled]="rolecontrol.invalid" [loader]="issave" (click)="savedata()" color="primary">
+                  <i class="la la-save"></i> Lưu
+                </button>
+              </div>
+            </div>
+          </div>
+          <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+              <button *ngIf="node.AppPageID" mat-icon-button disabled></button>
+              <mat-checkbox *ngFor="let item of node.Roles" class="checklist-leaf-node"
+                            [checked]="sttcheck(node,item.AcctionName)" (change)="eventcheck(node,item.AcctionName)"
+                            style="margin-right: 10px">{{item.AcctionName}}</mat-checkbox>
+              <i [className]="node.Icon" style="margin-right:10px "></i>
+              <span *ngIf="node.AppPageID" [ngClass]="{'m--font-focus': node.Section}">
+                {{node.Name}}
+              </span>
+              <code *ngIf="!node.AppPageID"> {{node.FunctionName}}</code>
+            </mat-tree-node>
+            <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+              <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.filename"
+                      (click)="toggleNode(node)">
+                <mat-icon class="mat-icon-rtl-mirror">
+                  {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>
+              </button>
+              <mat-checkbox *ngFor="let item of node.Roles"
+                            [checked]="descendantsAllSelected(node,item.AcctionName)"
+                            [indeterminate]="descendantsPartiallySelected(node,item.AcctionName)"
+                            (change)="todoItemSelectionToggle(node,item.AcctionName)" style="margin-right: 10px">
+                {{item.AcctionName}}
+              </mat-checkbox>
+              <i [className]="node.Icon" style="margin-right:10px "></i>
+              <span>
+                {{node.Name}}
+              </span>
+            </mat-tree-node>
+          </mat-tree>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

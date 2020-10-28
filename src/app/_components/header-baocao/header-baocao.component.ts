@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, OnDestroy, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormGroup } from "@angular/forms";
-import { DataService } from "../../_services/data.service";
+import { DataService } from "src/app/_services/data.service";
 @Component({
     selector: "header-baocao",
     templateUrl: './header-baocao.component.html'
