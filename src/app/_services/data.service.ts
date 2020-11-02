@@ -312,7 +312,7 @@ export class DataService {
     this.userlogin = this._Login.getLoggedInUser();
     return {
       'Content-Type': 'application/json',
-      'Authorization': (isNull(this.userlogin) ? '' : ('Bearer ' + this.userlogin.access_token))
+      'Authorization': (isNull(this.userlogin) ? '' : ('Bearer ' + this.userlogin.token))
     };
   }
 
@@ -407,7 +407,7 @@ export class DataService {
           this._Toastr.error(ms);
         }
         else if (typeof str == 'object') {
-          
+
           if(isNullOrUndefined(str.ExceptionMessage))
             this._Toastr.error(MessageConstants.SERVE_ERROR_MSG);
           else

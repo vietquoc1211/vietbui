@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     ) {
         this.login_fr = new FormGroup({
             username: new FormControl('', [Validators.required, Validators.pattern(this.vali.v_username)]),
-            password: new FormControl('', [Validators.required, Validators.pattern(this.vali.v_password)]),
+            password: new FormControl('', [Validators.required]),
             remember: new FormControl(true)
         });
         this.titleService.setTitle('Đăng nhập');
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             .subscribe(
                 data => {
                     let user = data;
-                    if (user && user.access_token) {
+                    if (user && user.token) {
                         localStorage.setItem(SystemConstants.CURRENTUSER, JSON.stringify(user));
                     }
                     let url = this.sortParams(this.returnUrl)

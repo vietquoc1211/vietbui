@@ -12,10 +12,11 @@ export class LoginService {
     public isrefetch_token: boolean = false;
     constructor(private http: HttpClient,  private _router: Router ) { }
     login(username: string, password: string) {
-        let body = "userName=" + encodeURIComponent(username) +
-            "&password=" + encodeURIComponent(password) +
-            "&grant_type=password";
-        return this.http.post<any>(UrlConstants.BASE_API + UrlConstants.Api_Login, body);
+        let header = {
+          'Content-Type': 'application/json'
+        };
+        var raw = JSON.stringify({"username":""+username+"","password":""+password+""});
+        return this.http.post<any>(UrlConstants.BASE_API + UrlConstants.Api_Login, raw, { headers: header });
     }
     public logout() {
         localStorage.removeItem(SystemConstants.CURRENTUSER);
@@ -39,8 +40,8 @@ export class LoginService {
         from.setDate(from.getDate() + 5);
         if (from > to) {
             if (!this.isrefetch_token)
-                this.refetch_token(user.refresh_token, user.access_token).subscribe((res: any) => {
-                    if (res && res.access_token) {
+                this.refetch_token(user.refresh_token, user.token).subscribe((res: any) => {
+                    if (res && res.token) {
                         localStorage.setItem(SystemConstants.CURRENTUSER, JSON.stringify(res));
                         this.isrefetch_token = false;
                     }
@@ -60,8 +61,6 @@ export class LoginService {
             const appsetting=JSON.parse(data.appsetting);
             SystemConstants.CoTamUng=appsetting.CoTamUng=="1"||false;
             SystemConstants.CoKho=appsetting.CoKho=="1"||false;
-            // SystemConstants.CoTamUng=false;
-            // SystemConstants.CoKho=false;
         }
     }
 }

@@ -3,9 +3,7 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { Helpers } from '../helpers';
 import { ScriptLoaderService } from '../_services/script-loader.service';
 import { Title } from '@angular/platform-browser';
-import { SignalrService } from '../_services/signalr.service';
 import { LoginService } from '../_services/login.service';
-import { SystemConstants } from '../_common/SystemConstants';
 declare let mApp: any;
 declare let mUtil: any;
 declare let mLayout: any;
@@ -17,11 +15,10 @@ declare let mLayout: any;
 export class PagesComponent implements OnInit {
     status_signalr: Boolean;
     constructor(private titleService: Title, private _script: ScriptLoaderService, private _router: Router ,
-        private _signalr: SignalrService, private _login:LoginService) {
-            this._login.load_appsetting();
+         private _login:LoginService) {
+            // this._login.load_appsetting();
     }
     ngOnInit() {
-       
         this._script.loadScripts('body', ['assets/vendors/base/vendors.bundle.js', 'assets/base/scripts.bundle.js'], true)
             .then(result => {
                // Helpers.setLoading(false);
@@ -34,7 +31,7 @@ export class PagesComponent implements OnInit {
                // Helpers.setLoading(true);
                 // hide visible popover
                 (<any>$('[data-toggle="m-popover"]')).popover('hide');
-                
+
             }
             if (route instanceof NavigationEnd) {
                 // init required js
@@ -48,10 +45,5 @@ export class PagesComponent implements OnInit {
                 }).removeClass(animation).addClass(animation);
             }
         });
-        this.status_signalr = this._signalr.connectionExists;
-        this._signalr.connectionEstablished.subscribe(() => {
-            this.status_signalr = true;
-          });
     }
-   
 }

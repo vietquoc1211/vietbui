@@ -27,7 +27,7 @@ export class SignalrService {
 
     this.connectionExists = false;
     this.connection = $.hubConnection(UrlConstants.BASE_API);
-    this.connection.qs = { "access_token": _authenService.getLoggedInUser().access_token };
+    this.connection.qs = { "token": _authenService.getLoggedInUser().token };
     this.proxy = this.connection.createHubProxy(this.proxyName);
     this.TiepDon_registerOnServerEvents();
     this.ViewLCD_registerOnServerEvents();

@@ -1,0 +1,46 @@
+<form class="m-form" #form="ngForm" [formGroup]="formdata" (ngSubmit)="savedata(formdata.value)">
+    <h2 mat-dialog-title>{{const_data.MaTT?'Sửa tỉnh thành: '+const_data.TenTT:'Thêm mới tỉnh thành'}}</h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="content-dialog">
+            <div *ngIf="isLoading" class="dialog-loading-shade">
+                <mat-spinner></mat-spinner>
+            </div>
+            <div class="m-portlet__body">
+                <fieldset [disabled]="const_data.TenTT ? true : false">
+                    <mat-form-field class="example-full-width">
+                        <input [formControl]="code" name="code" matInput placeholder="Mã" required
+                            [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="formdata.controls['code'].errors?.required">{{vali_const.ms_required}}
+                        </mat-error>
+                        <mat-error *ngIf="formdata.controls['code'].errors?.maxlength">{{vali_const.ms_textlength}}
+                        </mat-error>
+                    </mat-form-field>
+                </fieldset>
+                <mat-form-field class="example-full-width">
+                    <input [formControl]="name" matInput name="name" placeholder="Tên tỉnh"
+                        [errorStateMatcher]="matcher" required autocomplete="off">
+                    <mat-error *ngIf="formdata.controls['name'].errors?.required">{{vali_const.ms_required}}
+                    </mat-error>
+                    <mat-error *ngIf="formdata.controls['name'].errors?.maxlength">{{vali_const.ms_textlength}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <input [formControl]="slug" matInput name="slug" placeholder="slug"
+                      autocomplete="off">
+                </mat-form-field>
+
+                <p>
+                    <mat-checkbox formControlName="lock">Khóa hoạt động</mat-checkbox>
+                </p>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button mat-dialog-close><i class="la la-close"></i> Thoát</button>
+        <button mat-raised-button [disabled]="isLoading" type="button" (click)="loaddata(); form.resetForm()"
+            color="accent">
+            <i class="la la-refresh"></i> Tải lại</button>
+        <button mat-raised-button [disabled]="isLoading" [loader]="issave" type="submit" color="primary"><i
+                class="la la-save"></i> Lưu</button>
+    </mat-dialog-actions>
+</form>

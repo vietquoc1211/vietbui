@@ -21,8 +21,8 @@ const routes: Routes = [
         'loadChildren': '.\/admin\/admin.module#AdminModule'
       },
       {
-        'path': 'khai-bao-danh-muc',
-        'loadChildren': '.\/khai-bao-danh-muc\/khai-bao-danh-muc.module#KhaiBaoDanhMucModule'
+        'path': 'danh-muc',
+        'loadChildren': '.\/danh-muc\/danh-muc.module#DanhMucModule'
       },
       {
         'path': 'profile',

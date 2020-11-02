@@ -1,0 +1,54 @@
+<form class="m-form" #form="ngForm" [formGroup]="formdata" (ngSubmit)="savedata(formdata.value)">
+    <h2 mat-dialog-title>
+        {{const_data.MaPhuongXa?'Sửa xã phường: ' + data.nameTT + ' / ' + data.name + ' / ' +const_data.TenPhuongXa:'Thêm mới xã phường : ' + data.nameTT + ' / ' + data.name }}
+    </h2>
+
+    <mat-dialog-content class="mat-typography">
+        <div class="content-dialog">
+            <div *ngIf="isLoading" class="dialog-loading-shade">
+                <mat-spinner></mat-spinner>
+            </div>
+            <div class="m-portlet__body">
+                <!-- <mat-form-field class="example-full-width">
+                    <input formControlName="MaQuanHuyen" matInput placeholder="Mã Quận Huyện*">
+                </mat-form-field> -->
+                <fieldset [disabled]="const_data.TenPhuongXa ? true : false">
+                    <mat-form-field class="example-full-width">
+                        <input formControlName="MaPhuongXa" matInput placeholder="Mã xã phường" autocomplete="off"
+                            required>
+                        <mat-error *ngIf="formdata.controls['MaPhuongXa'].errors?.required">{{vali_const.ms_required}}
+                        </mat-error>
+                        <mat-error *ngIf="formdata.controls['MaPhuongXa'].errors?.maxlength">
+                            {{vali_const.ms_textlength}}
+                        </mat-error>
+                    </mat-form-field>
+                </fieldset>
+                <mat-form-field class="example-full-width">
+                    <input formControlName="TenPhuongXa" matInput placeholder="Tên xã phường" required
+                        autocomplete="off">
+                    <mat-error *ngIf="formdata.controls['TenPhuongXa'].errors?.required">{{vali_const.ms_required}}
+                    </mat-error>
+                    <mat-error *ngIf="formdata.controls['TenPhuongXa'].errors?.maxlength">{{vali_const.ms_textlength}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input formControlName="VietTat" matInput placeholder="Viết tắt" autocomplete="off">
+                    <mat-error *ngIf="formdata.controls['VietTat'].errors?.required">{{vali_const.ms_required}}
+                    </mat-error>
+                    <mat-error *ngIf="formdata.controls['VietTat'].errors?.maxlength">{{vali_const.ms_textlength}}
+                    </mat-error>
+                </mat-form-field>
+                <p>
+                    <mat-checkbox formControlName="Lock">Khóa hoạt động</mat-checkbox>
+                </p>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button mat-dialog-close><i class="la la-close"></i> Thoát</button>
+        <button mat-raised-button [disabled]="isLoading" (click)="loaddata(); form.resetForm()" color="accent">
+            <i class="la la-refresh"></i> Tải lại</button>
+        <button mat-raised-button [disabled]="isLoading" [loader]="issave" color="primary"><i class="la la-save"></i>
+            Lưu</button>
+    </mat-dialog-actions>
+</form>
