@@ -24,11 +24,10 @@
                     <mat-error *ngIf="formdata.controls['name'].errors?.maxlength">{{vali_const.ms_textlength}}
                     </mat-error>
                 </mat-form-field>
-                <mat-form-field class="example-full-width">
+                <!-- <mat-form-field class="example-full-width">
                   <input [formControl]="slug" matInput name="slug" placeholder="slug"
                       autocomplete="off">
-                </mat-form-field>
-
+                </mat-form-field> -->
                 <p>
                     <mat-checkbox formControlName="lock">Khóa hoạt động</mat-checkbox>
                 </p>

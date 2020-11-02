@@ -1,0 +1,680 @@
+@page {
+    margin: 0;
+}
+
+body {
+    margin: 0
+}
+
+.sheet {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    page-break-after: always;
+}
+
+
+/** Paper sizes **/
+
+.bodyprint.A3 .sheet {
+    width: 297mm;
+    min-height: 419mm
+}
+
+.bodyprint.A3.landscape .sheet {
+    width: 420mm;
+    min-height: 296mm
+}
+
+.bodyprint.A4 .sheet {
+    width: 210mm;
+    min-height: 296mm;
+}
+
+.bodyprint.A4.landscape .sheet {
+    width: 297mm;
+    min-height: 209mm
+}
+
+.bodyprint.A5 .sheet {
+    width: 148mm;
+    min-height: 209mm
+}
+
+.bodyprint.A5.landscape .sheet {
+    width: 210mm;
+    min-height: 147mm
+}
+
+.bodyprint.letter .sheet {
+    width: 216mm;
+    min-height: 279mm
+}
+
+.bodyprint.letter.landscape .sheet {
+    width: 280mm;
+    min-height: 215mm
+}
+
+.bodyprint.legal .sheet {
+    width: 216mm;
+    min-height: 356mm
+}
+
+.bodyprint.legal.landscape .sheet {
+    width: 357mm;
+    min-height: 215mm
+}
+
+
+/** Padding area **/
+
+.sheet.padding-10mm {
+    padding: 10mm
+}
+
+.sheet.padding-15mm {
+    padding: 15mm
+}
+
+.sheet.padding-20mm {
+    padding: 20mm
+}
+
+.sheet.padding-25mm {
+    padding: 25mm
+}
+
+
+/** For screen preview **/
+
+@media screen {
+    /*body { background: #e0e0e0 }*/
+    .sheet {
+        background: white;
+        box-shadow: 0 .5mm 2mm rgba(0, 0, 0, .3);
+        margin: 5mm auto;
+    }
+}
+
+
+/** Fix for Chrome issue #273306 **/
+
+@media print {
+    .bodyprint.A3.landscape {
+        width: 420mm
+    }
+    .bodyprint.A3,
+    .bodyprint.A4.landscape {
+        width: 297mm
+    }
+    .bodyprint.A4,
+    .bodyprint.A5.landscape {
+        width: 210mm
+    }
+    .bodyprint.A5 {
+        width: 148mm
+    }
+    .bodyprint.letter,
+    .bodyprint.legal {
+        width: 216mm
+    }
+    .bodyprint.letter.landscape {
+        width: 280mm
+    }
+    .bodyprint.legal.landscape {
+        width: 357mm
+    }
+    .bodyprint * {
+        font-family: "Times New Roman", arial, Roboto, Helvetica, Arial, sans-serif, "Open Sans", sans-serif;
+        color: #000;
+        margin: 0px;
+        padding: 0px;
+        font-size: 12px;
+        line-height: 1.3;
+    }
+    #print-bottom {
+        position: fixed;
+        bottom: 0px;
+        left: 20px;
+        font-size: 11px;
+        font-style: italic;
+    }
+    .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        clear: both;
+    }
+    .col {
+        -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        max-width: 100%;
+    }
+    .col-auto {
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 100%;
+    }
+    .col-1 {
+        -ms-flex: 0 0 8.333333%;
+        flex: 0 0 8.333333%;
+        max-width: 8.333333%;
+    }
+    .col-2 {
+        -ms-flex: 0 0 16.666667%;
+        flex: 0 0 16.666667%;
+        max-width: 16.666667%;
+    }
+    .col-3 {
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .col-4 {
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+    .col-5 {
+        -ms-flex: 0 0 41.666667%;
+        flex: 0 0 41.666667%;
+        max-width: 41.666667%;
+    }
+    .col-6 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .col-7 {
+        -ms-flex: 0 0 58.333333%;
+        flex: 0 0 58.333333%;
+        max-width: 58.333333%;
+    }
+    .col-8 {
+        -ms-flex: 0 0 66.666667%;
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
+    .col-9 {
+        -ms-flex: 0 0 75%;
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+    .col-10 {
+        -ms-flex: 0 0 83.333333%;
+        flex: 0 0 83.333333%;
+        max-width: 83.333333%;
+    }
+    .col-11 {
+        -ms-flex: 0 0 91.666667%;
+        flex: 0 0 91.666667%;
+        max-width: 91.666667%;
+    }
+    .col-12 {
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .col-offset-1 {
+        margin-left: 8.333333%;
+    }
+    .col-offset-2 {
+        margin-left: 16.666667%;
+    }
+    .col-offset-3 {
+        margin-left: 25%;
+    }
+    .col-offset-4 {
+        margin-left: 33.333333%;
+    }
+    .col-offset-5 {
+        margin-left: 41.666667%;
+    }
+    .col-offset-6 {
+        margin-left: 50%;
+    }
+    .col-offset-7 {
+        margin-left: 58.333333%;
+    }
+    .col-offset-8 {
+        margin-left: 66.666667%;
+    }
+    .col-offset-9 {
+        margin-left: 75%;
+    }
+    .col-offset-10 {
+        margin-left: 83.333333%;
+    }
+    .col-offset-11 {
+        margin-left: 91.666667%;
+    }
+    .col-offset-12 {
+        margin-left: 100%;
+    }
+    .bodyprint table {
+        width: 100%;
+        background-color: transparent;
+        border-spacing: 0px;
+        border-collapse: collapse;
+    }
+    .bodyprint table,
+    .bodyprint table td,
+    .bodyprint table th {
+        border: 1px solid #000;
+        padding: 5px;
+    }
+    .bodyprint table thead td,
+    .bodyprint table thead th {
+        font-weight: bold;
+        border-bottom-width: 1px;
+    }
+    .text-center {
+        text-align: center;
+    }
+    .text-right {
+        text-align: right;
+    }
+    .text-left {
+        text-align: left;
+    }
+}
+
+#print-head {
+    position: relative;
+    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
+}
+
+#print-head .print-logo {
+    flex: 0 0 56px;
+    max-width: 56px;
+    text-align: center;
+}
+
+#print-head .print-logo img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#print-head .print-head-content {
+    flex: 0 0 315px;
+    max-width: 315px;
+    padding-left: 5px;
+}
+
+#print-head .print-head-content .syt {
+    text-transform: uppercase;
+}
+
+#print-head .print-head-content .tenphongkham {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#print-head .print-barcode {
+    flex: 0 0 103px;
+    max-width: 103px;
+    margin-top: -17px;
+    text-align: center;
+}
+
+#print-head .print-barcode .mabn {
+    margin-top: -12px;
+    position: relative;
+}
+
+.bodyprint .title_print {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#print-bottom {
+    position: absolute;
+    bottom: 20px;
+    font-size: 11px;
+    font-style: italic;
+}
+
+#print-bottom img {
+    height: 14px;
+}
+
+
+/* in kết quả cdha */
+
+.mota-pre_ {
+    white-space: pre-line;
+}
+
+.mota-pre-span-line-height_ {
+    margin: auto !important;
+    margin-top: 5px;
+    margin-left: 20px !important;
+}
+
+.main-print-PhieuKhamSan_ p {
+    margin-bottom: 0px;
+}
+
+.text-margin-auto-center_ {
+    margin: auto;
+}
+
+.height-ki-ten-phieu-kham_ {
+    height: 80px;
+}
+
+
+/*  */
+.p--padding-5-10 {
+    padding: 5px 10px;
+  }
+  .m--magin-10-0 {
+    margin: 10px 0px;
+  }
+.m--margin-top-2 {
+    margin-top: 2px;
+  }
+.m--margin-top-3 {
+    margin-top: 3px;
+}
+.m--margin-top-4 {
+    margin-top: 4px;
+}
+.m--margin-top-5 {
+    margin-top: 5px !important;
+}
+.m--margin-top-9 {
+    margin-top: 10px;
+}
+.m--margin-top-10 {
+    margin-top: 10px;
+}
+
+.m--margin-top-20 {
+    margin-top: 20px;
+}
+
+.m--margin-top-50 {
+    margin-top: 50px;
+}
+
+.m--margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.m--margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.m--margin-left-10 {
+    margin-left: 10px;
+}
+
+.m--margin-left-20 {
+    margin-left: 20px;
+}
+
+.m--margin-right-10 {
+    margin-right: 10px;
+}
+
+.m--margin-right-20 {
+    margin-right: 20px;
+}
+.m--margin-right-50 {
+    margin-right: 50px;
+}
+
+.m--padding-top-10 {
+    padding-top: 10px;
+}
+
+.m--padding-top-20 {
+    padding-top: 20px;
+}
+
+.m--padding-bottom-10 {
+    padding-bottom: 10px;
+}
+
+.m--padding-bottom-20 {
+    padding-bottom: 20px;
+}
+
+.m--padding-left-10 {
+    padding-left: 10px;
+}
+.m--padding-left-15 {
+    padding-left: 15px;
+}
+
+.m--padding-left-20 {
+    padding-left: 20px;
+}
+
+.m--padding-right-10 {
+    padding-right: 10px;
+}
+
+.m--padding-right-20 {
+    padding-right: 20px;
+}
+.m--padding-2 {
+    padding: 2px !important;
+}
+.font-weight
+{
+    font-weight: bold;
+}
+
+.bodyprint .table_thuocKS_ table,
+.bodyprint .table_thuocKS_ table td,
+.bodyprint .table_thuocKS_ table th {
+    border: 1px solid white !important;
+}
+
+.bodyprint .table-content_, .bodyprint .table-content_ td, .bodyprint .table-content_ th {
+    border: none;
+    padding: 0px;
+}
+
+/* # header phòng khám MTT */
+#print-head-mtt
+{
+    position: relative;
+    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
+}
+#print-head-mtt .print-logo
+{
+    flex: 0 0 250px;
+    height: 75px !important;
+    max-width: 250px !important;
+    height: 75px;
+    text-align: left;
+}
+#print-head-mtt .print-logo img
+{
+    max-width: 100%;
+    max-height: 100%;
+}
+#print-head-mtt .print-head-content
+{
+    text-align: right;
+    flex: 1;
+}
+#print-head-mtt .print-head-content .syt
+{
+    text-transform: uppercase;
+}
+#print-head-mtt .print-head-content .tenphongkham
+{
+    font-weight: bold;
+    font-size: 13px;
+}
+#print-head-mtt .print-head-content .margin_ {
+    margin-bottom: 3px;
+}
+
+.font-size-mtt_ {font-size: 16px;}
+
+.font-size--14 {
+    font-size: 14px !important;
+}
+.font-size--15 {
+    font-size: 15px;
+}
+.page .title_print {
+    font-size: 25px;
+}
+/* nhiều chấm dưới chân text khi in */
+.linedText {
+    color: #000000;
+    line-height: 29px;
+    background-image: 
+    -webkit-linear-gradient(right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,0) 51%,rgba(255,255,255,0) 100%),
+    -webkit-linear-gradient(bottom, rgba(128,128,128,1) 0%, rgba(128,128,128,0) 8%, rgba(128,128,128,0) 100%),
+    -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,0) 51%,rgba(255,255,255,0) 100%); 
+    background-size: 12px 24px;
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;    
+  }
+.gioiinh-in-mtt {
+    margin-top: -2px !important;
+}
+.div-inline_ {
+    display:inline-block;
+    min-height:85px;
+  }
+  .notes {
+    background-attachment: local;
+    line-height: 24px;
+    width: 100%;
+    background-image: -webkit-linear-gradient(right, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,0) 51%,rgba(255,255,255,0) 100%),
+    -webkit-linear-gradient(bottom, rgb(0, 0, 0) 0%, rgba(128,128,128,0) 8%, rgba(128,128,128,0) 100%),
+    -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%) !important;
+    background-size: 12px;
+    background-repeat: repeat;
+    background-position: left bottom;
+    border: none !important;
+    background-color: transparent !important;
+    overflow: hidden !important;
+    pointer-events: none;
+    resize: none !important;
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important; 
+  }
+ 
+  /* .linesText {
+    display: inline-block;
+    font-size: 14px;
+    max-width: 100%;
+    width: 100%;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    background-image: 
+    linear-gradient(right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 0) 51%, rgba(255, 255, 255, 0) 100%),
+    linear-gradient(bottom, rgb(0, 0, 0) 0%, rgba(128, 128, 128, 0) 8%, rgba(128, 128, 128, 0) 100%),
+    -webkit-linear-gradient(right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 0) 51%, rgba(255, 255, 255, 0) 100%),
+    -webkit-linear-gradient(bottom, rgb(0, 0, 0) 0%, rgba(128, 128, 128, 0) 8%, rgba(128, 128, 128, 0) 100%);
+    background-size: 8px 18px;
+  }
+  .onelineText {
+    background-image: 
+  -webkit-linear-gradient(right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 80%, rgba(255, 255, 255, 0) 51%, rgba(255, 255, 255, 0) 100%),
+  -webkit-linear-gradient(bottom, rgb(0, 0, 0) 0%, rgba(128, 128, 128, 0) 8%, rgba(128, 128, 128, 0) 100%) !important;
+    background-size: 8px 16px !important;
+    font-size: 14px !important;
+    background-repeat: repeat-x !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    line-height: 1.5 !important;
+    background-position: left bottom !important;
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important; 
+  } */
+
+  ::ng-deep #in_mtt_ .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
+    background-image: none !important;
+  }
+  ::ng-deep #in_mtt_ .mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+  }
+  ::ng-deep #in_mtt_ .mat-form-field-appearance-legacy .mat-form-field-infix {
+    border-top: none;
+  }
+  ::ng-deep #in_khaosat_ .mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
+    background-image: none !important;
+  }
+  ::ng-deep #in_khaosat_ .mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+  }
+  ::ng-deep #in_khaosat_ .mat-form-field-appearance-legacy .mat-form-field-infix {
+    border-top: none;
+  }
+  .m-margin-left--20- {
+    margin-left: -20px;
+  }
+  .m-margin-left--30- {
+    margin-left: -30px;
+  }
+  .m-margin-bottom--5 {
+    margin-bottom: 5px
+  }
+  .i--text-indent-25 {
+    text-indent: 25px;
+  }
+  .i--text-indent-43 {
+    text-indent: 43px;
+  }
+  .i--text-indent-70 {
+    text-indent: 70px;
+  }
+  .diachi-ks_ {
+    position: absolute;
+    top: 245px;
+    z-index: 1;
+    padding: 7px 19px 0px 0px;
+    background: white;
+  }
+  /* khoanh tròn đáp án */
+  .circle{
+    border:1px solid black;
+    border-radius:50%;
+    background:rgba(0,0,0,0);
+    color:black;
+    width:20px;
+    height:20px;
+    text-align:center;
+    line-height:20px;
+  }
+  #in_khaosat_ hr {
+    background: black;
+  }
+  .div_contentEdittable {
+    display:inline-block;
+    min-height: 50px;
+  }
+
+  .mar-bot-backg--w__ {
+    margin-bottom: 8px;
+    background: white !important;
+  }
