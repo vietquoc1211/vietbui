@@ -6,7 +6,7 @@ import { DataService } from '../../../_services/data.service';
 import { DialogService } from '../../../_services/dialog.service';
 import { BehaviorSubject } from 'rxjs';
 import { AppPageCreateComponent } from './app-page-create/app-page-create.component';
-import { PageMenuNode,PageMenuFlatNode } from '../../../_interfaces/PageMenuNode';
+import { PageMenuNode,PageMenuFlatNode } from '../../../_Interfaces/PageMenuNode';
 
 @Component({
   templateUrl: "./app-page.component.html",
