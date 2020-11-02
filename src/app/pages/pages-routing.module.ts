@@ -16,10 +16,10 @@ const routes: Routes = [
         'path': 'index',
         'loadChildren': '.\/default\/index.module#IndexModule'
       },
-      {
-        'path': 'admin',
-        'loadChildren': '.\/admin\/admin.module#AdminModule'
-      },
+      // {
+      //   'path': 'admin',
+      //   'loadChildren': '.\/admin\/admin.module#AdminModule'
+      // },
       {
         'path': 'danh-muc',
         'loadChildren': '.\/danh-muc\/danh-muc.module#DanhMucModule'
