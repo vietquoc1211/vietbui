@@ -17,7 +17,7 @@ const forceSSL = function () {
 app.use(express.static('./dist'));
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname,'/dist/index.html'));
+  res.sendFile(path.join(__dirname,'/dist/Client/index.html'));
 });
 
 app.use(forceSSL());
