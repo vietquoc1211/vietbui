@@ -161,10 +161,6 @@ export class DataService {
     this._Toastr.error('Thông tin chưa hợp lệ!', 'Vui lòng trả lời câu hỏi!');
   }
 
-  toastr_filter_BN_error() {
-    this._Toastr.error('Mã không tồn tại!', 'Không tìm thấy thông tin bệnh nhân!');
-  }
-
   toastr_duplicate_error() {
     const mes = 'Mã đã tồn tại.';
     if (this.toastr_checktoastr(mes)) {
@@ -196,15 +192,6 @@ export class DataService {
     }
     this._Toastr.error(mes);
   }
-
-  toastr_tiepdonOnline_succefully(name: string) {
-    this._Toastr.info(`<span class="color-message-tiepdononline">${name}</span> <span class="text-tiepdononline_">đã hẹn khám thành công !</span>`, null, {
-      enableHtml: true,
-      progressBar: true,
-      positionClass: 'toast-top-right'
-    });
-  }
-
   toastr_errormassage(body: any): boolean {
     if (body && body.errorMassage) {
       this._Toastr.error(body.errorMassage);
@@ -318,26 +305,23 @@ export class DataService {
 
   get(uri: string) {
     const header = this.createrheader();
-    // const observable = this._http.get(UrlConstants.BASE_API + uri, { headers: header }).toPromise();
-    // const reuslt = Observable.create((observer) => {
-    //     observable.then((res: any) => {
-    //         if (this.checkresponse(res)) {
-    //             observer.next(res);
-    //             observer.complete();
-    //         }
-    //         else
-    //             observer.complete();
-    //     });
-    // });
-    // return reuslt;
     return this._http.get(UrlConstants.BASE_API + uri, { headers: header });
   }
 
-  post(uri: string, data?: any) {
+  post(uri: string, body?: any) {
     let header = this.createrheader();
-    return this._http.post(UrlConstants.BASE_API + uri, data, { headers: header });
+    return this._http.post(UrlConstants.BASE_API + uri, body, { headers: header });
   }
 
+  delete(uri: string) {
+    let header = this.createrheader();
+    return this._http.delete(UrlConstants.BASE_API + uri,{ headers: header });
+  }
+
+  put(uri: string,body?: any) {
+    let header = this.createrheader();
+    return this._http.put(UrlConstants.BASE_API + uri,body,{ headers: header });
+  }
   checkresponse(result: any): Boolean {
     if (result.ResponseError) {
       this._Toastr.error(result.ThongBao);

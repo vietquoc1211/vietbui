@@ -61,19 +61,19 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Client:build",
+            "browserTarget": "vietbui:build",
             "port": 1337
           },
           "configurations": {
             "production": {
-              "browserTarget": "Client:build:production"
+              "browserTarget": "vietbui:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Client:build"
+            "browserTarget": "vietbui:build"
           }
         },
         "test": {

@@ -20,12 +20,15 @@ export class MyErrorStateMatcherTinhThanh implements ErrorStateMatcher {
 export class TinhThanhCreateComponent {
   public isLoading: boolean = false;
   public issave: boolean = false;
-  private API = '/DanhMuc/TinhThanh';
+  private API = '/danhmuc/tinhthanh';
   public formdata: FormGroup;
   private vali_const = ValidatorConstants;
   public const_data: any = {};
   code = new FormControl('', [Validators.required, Validators.maxLength(128)]);
   name = new FormControl('', [Validators.required, Validators.maxLength(256)]);
+  slug = new FormControl('', [Validators.required, Validators.maxLength(256)]);
+  type = new FormControl('', [Validators.required, Validators.maxLength(256)]);
+  name_with_type = new FormControl('', [Validators.required, Validators.maxLength(256)]);
   matcher = new MyErrorStateMatcherTinhThanh();
   @ViewChild('form') form;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -39,7 +42,10 @@ export class TinhThanhCreateComponent {
     this.formdata = this.fb.group({
       code: this.code,
       name: this.name,
-     lock: false
+      slug: this.slug,
+      type: this.type,
+      name_with_type: this.name_with_type,
+      lock: false
     });
 
   }
@@ -47,6 +53,8 @@ export class TinhThanhCreateComponent {
     this.formdata.controls['code'].setValue(values.code);
     this.formdata.controls['name'].setValue(values.name);
     this.formdata.controls['slug'].setValue(values.slug);
+    this.formdata.controls['type'].setValue(values.type);
+    this.formdata.controls['name_with_type'].setValue(values.name_with_type);
     this.formdata.controls['lock'].setValue(values.lock);
   }
   loaddata() {
@@ -78,7 +86,9 @@ export class TinhThanhCreateComponent {
     this.const_data.slug = values.slug;
     this.const_data.lock = values.lock;
     let isadd = isNullOrUndefined(this.data.Id);
-    this._data.post(this.API + (isadd ? '/add' : '/update'), this.const_data)
+    if(isadd)
+    {
+      this._data.post(this.API + '/add', this.const_data)
       .subscribe((res: any) => {
         if (res.Loi) {
           this._data.toastr_duplicate_error();
@@ -93,5 +103,22 @@ export class TinhThanhCreateComponent {
         this._data.handleError(error);
         this.issave = false;
       });
+    }
+    else {
+      this._data.put(this.API + '/' + this.const_data._id, this.const_data).subscribe((res: any) => {
+        if (res.status=='0') {
+          this._data.toastr_error(res.message);
+          this.issave = false;
+          this.const_data = []
+          return;
+        }
+        this.issave = false;
+        this._data.toastr_save_success(isadd);
+        this.dialogRef.close(true);
+      }, (error) => {
+        this._data.handleError(error);
+        this.issave = false;
+      });
+    }
   }
 }

@@ -40,8 +40,8 @@ export class TinhThanhComponent implements OnInit {
     this._dialog.open_dialog_create(TinhThanhCreateComponent, { Id: id }, () => this.loaddata());
   }
   delete(item) {
-    this._dialog.open_dialog_confirm_delete({ Title: 'Xóa tỉnh ' + item.TenTT }, () => {
-      this._data.post(this.API + '/delete/' + item.MaTT)
+    this._dialog.open_dialog_confirm_delete({ Title: 'Xóa tỉnh ' + item.name }, () => {
+      this._data.delete(this.API + '/' + item._id)
         .subscribe((res: any) => {
           this._data.toastr_delete_success();
           this.loaddata();
