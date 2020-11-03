@@ -18,8 +18,8 @@ import { NgxBarcodeModule } from 'ngx-barcode';
         </div>
         <div id="print-bottom" style="font-style: italic;">
         <section class="rpt-footer-page" *ngIf="footer">
-        <img src="../assets/media/img/logo/ehislogosmall.jpg">
-        Design by SongAn Co.LTD: www.EHIS.VN</section>
+        <img src="../assets/media/img/logo/vietbuilogosmall.jpg">
+        Design by </section>
       </div>
   `,
   styles: [`
@@ -67,7 +67,7 @@ import { NgxBarcodeModule } from 'ngx-barcode';
               font-size: 11px;
               font-style: italic;
             }
-            #print-bottom img{  
+            #print-bottom img{
               height: 14px;
               }
   `]

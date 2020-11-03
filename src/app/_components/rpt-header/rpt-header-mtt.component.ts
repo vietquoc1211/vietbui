@@ -18,8 +18,8 @@ import { NgxBarcodeModule } from 'ngx-barcode';
         </div>
         <div id="print-bottom" style="font-style: italic;">
         <section class="rpt-footer-page" *ngIf="footer">
-        <img src="../assets/media/img/logo/ehislogosmall.jpg">
-        Design by SongAn Co.LTD: www.EHIS.VN</section>
+        <img src="../assets/media/img/logo/vietbuilogosmall.jpg">
+        Design by SongAn Co.LTD: www.vietbui.VN</section>
       </div>
   `,
   // <div id="print-head">
@@ -35,13 +35,13 @@ import { NgxBarcodeModule } from 'ngx-barcode';
   //       </div>
   //       <div id="print-bottom" style=" font-style: italic;">
   //       <section class="rpt-footer-page" *ngIf="footer">
-  //       <img src="../assets/media/img/logo/ehislogosmall.jpg">
-  //       Design by SongAn Co.LTD: www.EHIS.VN</section>
+  //       <img src="../assets/media/img/logo/vietbuilogosmall.jpg">
+  //       Design by SongAn Co.LTD: www.vietbui.VN</section>
   //     </div>
   // <div class="print-barcode">
   //           <div>
   //             <ngx-barcode [bc-width]="1" [bc-font-size]="13" [bc-margin-left]="0" [bc-margin-right]="0"
-  //               [bc-text-position]="0" [bc-text-margin]="0" [bc-height]="35" 
+  //               [bc-text-position]="0" [bc-text-margin]="0" [bc-height]="35"
   //               [bc-element-type]="'svg'" [bc-format]="'CODE128'" [bc-value]="MaBN" [bc-display-value]="false">
   //             </ngx-barcode>
   //           </div>
@@ -89,7 +89,7 @@ import { NgxBarcodeModule } from 'ngx-barcode';
               font-size: 11px;
               font-style: italic;
             }
-            #print-bottom img{  
+            #print-bottom img{
               height: 14px;
               }
   `]
