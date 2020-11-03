@@ -1,0 +1,45 @@
+
+.table {
+  border-collapse: collapse !important;
+  display: table !important;
+}
+.height-ki-ten-phieu-kham_ {
+    height: 50px;
+}
+.noidung-print-y-lenh_:first-child + .option_prit-y-lenh {
+    display: none;
+}
+.last {
+    display: none;
+}
+.first {
+    display: none;
+}
+.text-indent-item-tuvan-phieukham {
+    text-indent: 25px;
+}
+.text-center-width-table_ {
+    width: 76px !important;
+}
+.text-center-width-min-table_ {
+    width: 45px;
+}
+.flex-item-thuocKS_ {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+}
+.page_2 {
+}
+/* .STT-thuocKS_ {
+    flex: 0.5;
+}
+.TENTHUOC-thuocKS_ {
+    flex: 4
+}
+.SOLUONG-thuocKS_ {
+    flex: 1;
+}
+.DONVITINH-thuocKS_ {
+    float: 1;
+} */
