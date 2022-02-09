@@ -18,11 +18,11 @@ export class QuanHuyenComponent implements OnInit {
   public filterColumns = ['MaQuanHuyen', 'TenQuanHuyen'];
   public filtercustom = [this._data.fun_filter_texttoboole('khóa', 'Lock')];
   public dataSource: any = new MatTableDataSource<any>();
-  private API = '/api/DMQuanHuyen';
+  private API = '/DanhMuc/QuanHuyen';
   private name: any;
   protected tinhThanh: any[] = [];
   public CtrlQuan: FormControl = new FormControl(null);
-  public fnmapquan: Function = (data) => { return data.map(o => { return { id: o.MaTT, text: o.TenTT } }) };
+  public fnmapquan: Function = (data) => { return data.map(o => { return { id: o.code, text: o.name } }) };
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -38,7 +38,7 @@ export class QuanHuyenComponent implements OnInit {
 
   loaddata(idtt) {
     this.isLoading = true;
-    this._data.get(this.API + '/getbymatt/' + idtt)
+    this._data.get(this.API + '/getbytinhthanhid/' + idtt)
       .subscribe((res: any) => {
         this.dataSource.data = res;
         this.isLoading = false;

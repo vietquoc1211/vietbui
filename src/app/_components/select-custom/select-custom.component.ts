@@ -89,7 +89,7 @@ export class SelectCustomComponent implements OnInit, OnDestroy {
     if (this.isload && val) {
       this.dataSource = this.AllData.filter(item => val(item));
       this.filtered.next(this.dataSource.slice());
-      let itemselected = this.dataSource.find(s => s.id == this.DefaultValue) || null;
+      let itemselected = this.dataSource.find(s => s._id == this.DefaultValue) || null;
       this.setInitialValue(itemselected);
     }
     this._filterbefore = val;
@@ -107,11 +107,11 @@ export class SelectCustomComponent implements OnInit, OnDestroy {
   set DefaultValue(val: any) {
     if (this.isload) {
       if (this.AllData && this.AllData.length > 0) {
-        let item = this.AllData.find(s => s.id == val) || null;
+        let item = this.AllData.find(s => s._id == val) || null;
         this.setInitialValue(item);
       }
       else {
-        let item = this.dataSource.find(s => s.id == val) || null;
+        let item = this.dataSource.find(s => s._id == val) || null;
         this.setInitialValue(item);
       }
     }
@@ -148,7 +148,7 @@ export class SelectCustomComponent implements OnInit, OnDestroy {
           this.Data.unshift({ id: 'All', text: 'Tất cả', all: true });
         this.dataSource = this.Data;
         this.filtered.next(this.dataSource.slice());
-        let itemselected = this.dataSource.find(s => s.id == this.DefaultValue) || null;
+        let itemselected = this.dataSource.find(s => s._id == this.DefaultValue) || null;
         this.setInitialValue(itemselected);
         this.isload = true;
       }
@@ -160,9 +160,9 @@ export class SelectCustomComponent implements OnInit, OnDestroy {
       this._data.get(this.Api).subscribe((res: any) => {
         if (this.isfilterbefore) {
           if (this.fnMap == null)
-            this.AllData = res;
+            this.AllData = res.data;
           else
-            this.AllData = this.fnMap(res);
+            this.AllData = this.fnMap(res.data);
           if (this.All)
             this.AllData.unshift({ id: 'All', text: 'Tất cả', all: true });
           if (this.FilterBefore)
@@ -172,18 +172,18 @@ export class SelectCustomComponent implements OnInit, OnDestroy {
         }
         else {
           if (this.fnMap == null)
-            this.dataSource = res;
+            this.dataSource = res.data;
           else
-            this.dataSource = this.fnMap(res);
+            this.dataSource = this.fnMap(res.data);
           if (this.All)
             this.dataSource.unshift({ id: 'All', text: 'Tất cả', all: true });
         }
         this.filtered.next(this.dataSource.slice());
         let itemselected = null;
         if (this.DefaultValue && this.AllData && this.AllData.length > 0)
-          itemselected = this.AllData.find(s => s.id == this.DefaultValue) || null;
+          itemselected = this.AllData.find(s => s._id == this.DefaultValue) || null;
         else if (this.DefaultValue && this.dataSource && this.dataSource.length > 0)
-          itemselected = this.dataSource.find(s => s.id == this.DefaultValue) || null;
+          itemselected = this.dataSource.find(s => s._id == this.DefaultValue) || null;
         this.setInitialValue(itemselected);
         this.isload = true;
       }, (error) => {
@@ -216,7 +216,7 @@ export class SelectCustomComponent implements OnInit, OnDestroy {
   public setData(data: any) {
     this.dataSource = data;
     this.filtered.next(this.dataSource.slice());
-    let itemselected = this.dataSource.find(s => s.id == this.DefaultValue) || null;
+    let itemselected = this.dataSource.find(s => s._id == this.DefaultValue) || null;
     this.setInitialValue(itemselected);
     this.isload = true;
   }
@@ -233,7 +233,7 @@ export class SelectCustomComponent implements OnInit, OnDestroy {
       this.dataSource = this.dataSource.filter(s => !s.autopush)
       _next = true;
     }
-    if (item && this.dataSource.find(s => s.id == item.id) == null) {
+    if (item && this.dataSource.find(s => s._id == item._id) == null) {
       item.disabled = true;
       item.autopush = true;
       this.dataSource.push(item);
@@ -242,13 +242,13 @@ export class SelectCustomComponent implements OnInit, OnDestroy {
     if (_next)
       this.filtered.next(this.dataSource.slice());
     if (this.Viewport && item)
-      this.filtered.next(this.dataSource.filter(s => s.id == item.id).slice());
+      this.filtered.next(this.dataSource.filter(s => s._id == item._id).slice());
     this.filtered
       .pipe(take(1),
         takeUntil(this._onDestroy))
       .subscribe(() => {
         this.Ctrlselect.compareWith = (a: any, b: any) => {
-          if (b) return a.id == b.id
+          if (b) return a._id == b._id
           else return a == b;
         };
       });
@@ -271,17 +271,17 @@ export class SelectCustomComponent implements OnInit, OnDestroy {
   open(ev: boolean) {
     if (ev) {
       if (this.Viewport) {
-        if (this.Control.value != null && this.Control.value.id) {
+        if (this.Control.value != null && this.Control.value._id) {
             this.filtered.next(this.dataSource);
-            const index = this.dataSource.findIndex(s => s.id == this.Control.value.id);
+            const index = this.dataSource.findIndex(s => s._id == this.Control.value._id);
             setTimeout(()=>{this._viewportscroll.scrollToIndex(index, 'auto');},10)
         }
       }
     }
     else {
       if (this.Viewport) {
-        if (this.Control.value != null && this.Control.value.id) {
-          this.filtered.next(this.dataSource.filter(s => s.id == this.Control.value.id).slice());
+        if (this.Control.value != null && this.Control.value._id) {
+          this.filtered.next(this.dataSource.filter(s => s._id == this.Control.value._id).slice());
             this._viewportscroll.scrollToIndex(0, 'auto');
         }
       }

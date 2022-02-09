@@ -13,14 +13,14 @@ export class AsideNavComponent implements AfterViewInit {
     private _util = isNullOrUndefined;
     constructor(private _data: DataService) {
         this.isLoading = true;
-        this._data.get('/api/AppRoleFunction/getmenupage')
-            .subscribe((res: any) => {
-                this.data_menu = this.build_data(res, null);
-                this.isLoading = false;
-            }, (error) => {
-                this._data.handleError(error);
-                this.isLoading = false;
-            });
+        // this._data.get('/api/AppRoleFunction/getmenupage')
+        //     .subscribe((res: any) => {
+        //         this.data_menu = this.build_data(res, null);
+        //         this.isLoading = false;
+        //     }, (error) => {
+        //         this._data.handleError(error);
+        //         this.isLoading = false;
+        //     });
     }
     ngAfterViewInit() {
         mLayout.initAside();
