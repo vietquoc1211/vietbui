@@ -7,14 +7,14 @@
             </div>
             <div class="m-portlet__body">
                 <mat-form-field class="example-full-width">
-                    <input formControlName="code" matInput placeholder="mã dân tộc" required autocomplete="off">
+                    <input formControlName="code" matInput placeholder="code" required autocomplete="off">
                     <mat-error *ngIf="formdata.controls['code'].errors?.required">{{vali_const.ms_required}}
                     </mat-error>
                     <mat-error *ngIf="formdata.controls['code'].errors?.maxlength">{{vali_const.ms_textlength}}
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input formControlName="name" matInput placeholder="Tên dân tộc" required autocomplete="off">
+                    <input formControlName="name" matInput placeholder="name" required autocomplete="off">
                     <mat-error *ngIf="formdata.controls['name'].errors?.required">{{vali_const.ms_required}}
                     </mat-error>
                     <mat-error *ngIf="formdata.controls['name'].errors?.maxlength">{{vali_const.ms_textlength}}

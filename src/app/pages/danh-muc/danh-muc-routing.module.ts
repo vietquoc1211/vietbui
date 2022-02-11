@@ -31,8 +31,8 @@ const routes: Routes = [
                 }
             },
             {
-                'path': 'xa-phuong',
-                'component': _DanhMuc.XaPhuongComponent,
+                'path': 'phuong-xa',
+                'component': _DanhMuc.PhuongXaComponent,
                 data: {
                     title: 'Xã phường'
                 }

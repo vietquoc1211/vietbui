@@ -14,9 +14,9 @@ import { isNull, isNullOrUndefined } from 'util';
 })
 export class QuanHuyenComponent implements OnInit {
   public isLoading = false;
-  public displayedColumns = ['MaQuanHuyen', 'TenQuanHuyen', 'Lock', 'ThaoTao'];
-  public filterColumns = ['MaQuanHuyen', 'TenQuanHuyen'];
-  public filtercustom = [this._data.fun_filter_texttoboole('khóa', 'Lock')];
+  public displayedColumns = ['code', 'name', 'lock', 'action'];
+  public filterColumns = ['code', 'name'];
+  public filtercustom = [this._data.fun_filter_texttoboole('lock', 'lock')];
   public dataSource: any = new MatTableDataSource<any>();
   private API = '/DanhMuc/QuanHuyen';
   private name: any;
@@ -40,7 +40,7 @@ export class QuanHuyenComponent implements OnInit {
     this.isLoading = true;
     this._data.get(this.API + '/getbytinhthanhid/' + idtt)
       .subscribe((res: any) => {
-        this.dataSource.data = res;
+        this.dataSource.data = res.data;
         this.isLoading = false;
       }, (error) => {
         this._data.handleError(error);

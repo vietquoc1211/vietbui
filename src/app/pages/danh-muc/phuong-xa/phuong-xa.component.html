@@ -38,7 +38,7 @@
                         <div class="row align-items-center">
                             <div class="col-md-3 m--margin-bottom-10-mobile">
                                 <select-custom [Title]="'Tỉnh thành'" [Control]="CtrlTinh"
-                                    [Api]="'/api/dmtinhthanh/getallactive'" [fnMap]="fnmaptinh"
+                                    [Api]="'/DanhMuc/TinhThanh/getall'" [fnMap]="fnmaptinh"
                                     (SelectChange)="changeTinh($event)">
                                     <ng-template #itemTemplate let-item="item">
                                         {{item.text}}
@@ -67,25 +67,25 @@
                 </div>
                 <div class="mat-table__wrapper">
                     <mat-table [dataSource]="dataSource" matSort>
-                        <ng-container matColumnDef="MaPhuongXa">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header> Mã xã phường </mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.MaPhuongXa}} </mat-cell>
+                        <ng-container matColumnDef="code">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> code </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.code}} </mat-cell>
                         </ng-container>
-                        <ng-container matColumnDef="TenPhuongXa">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header> Tên xã phường </mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.TenPhuongXa}} </mat-cell>
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> name </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
                         </ng-container>
-                        <ng-container matColumnDef="VietTat">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header> Viết tắt </mat-header-cell>
-                            <mat-cell *matCellDef="let row"> {{row.VietTat}}</mat-cell>
+                        <ng-container matColumnDef="name_with_type">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> name_with_type </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.name_with_type}}</mat-cell>
                         </ng-container>
-                        <ng-container matColumnDef="Lock">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header> Khóa </mat-header-cell>
+                        <ng-container matColumnDef="lock">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> lock </mat-header-cell>
                             <mat-cell *matCellDef="let row">
-                                <span *ngIf="row.Lock" class="m--font-bold m--font-danger">Khóa</span>
+                                <span *ngIf="row.lock" class="m--font-bold m--font-danger">lock</span>
                             </mat-cell>
                         </ng-container>
-                        <ng-container matColumnDef="ThaoTao">
+                        <ng-container matColumnDef="action">
                             <mat-header-cell class="control1_table" *matHeaderCellDef> Thao tác </mat-header-cell>
                             <mat-cell class="control1_table" *matCellDef="let row">
                                 <button (click)="opendialog(row.MaQuanHuyen, row.MaPhuongXa)"

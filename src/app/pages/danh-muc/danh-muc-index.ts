@@ -13,8 +13,8 @@ export * from './quan-huyen/quan-huyen-create/quan-huyen-create.component';
 export * from './tinh-thanh/tinh-thanh.component';
 export * from './tinh-thanh/tinh-thanh-create/tinh-thanh-create.component';
 
-export * from './xa-phuong/xa-phuong.component';
-export * from './xa-phuong/xa-phuong-create/xa-phuong-create.component';
+export * from './phuong-xa/phuong-xa.component';
+export * from './phuong-xa/phuong-xa-create/phuong-xa-create.component';
 
 export * from './ton-giao/ton-giao.component';
 export * from './ton-giao/ton-giao-create/ton-giao-create.component';

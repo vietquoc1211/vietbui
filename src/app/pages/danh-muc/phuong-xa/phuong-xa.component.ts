@@ -1,32 +1,29 @@
-import { Component, OnInit, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DialogService } from 'src/app/_services/dialog.service';
 import { DataService } from 'src/app/_services/data.service';
-import { MatPaginator, MatSort, MatTableDataSource, MatSelect } from '@angular/material';
-import { XaPhuongCreateComponent } from './xa-phuong-create/xa-phuong-create.component';
-import { FormControl, Validators } from '@angular/forms';
-import { ReplaySubject, Subject } from 'rxjs';
-import { take, takeUntil, startWith } from 'rxjs/operators';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { PhuongXaCreateComponent } from './phuong-xa-create/phuong-xa-create.component';
+import { FormControl } from '@angular/forms';
 import { isNull } from 'util';
 
 @Component({
-  selector: 'xa-phuong',
-  templateUrl: './xa-phuong.component.html'
+  selector: 'phuong-xa',
+  templateUrl: './phuong-xa.component.html'
 })
-export class XaPhuongComponent implements OnInit {
+export class PhuongXaComponent implements OnInit {
   public isLoading = false;
-  public displayedColumns = ['MaPhuongXa', 'TenPhuongXa', 'VietTat', 'Lock', 'ThaoTao'];
-  public filterColumns = ['MaPhuongXa', 'TenPhuongXa', 'VietTat'];
-  public filtercustom = [this._data.fun_filter_texttoboole('khóa', 'Lock')];
+  public displayedColumns = ['code', 'name', 'name_with_type', 'lock', 'action'];
+  public filterColumns = ['code', 'name', 'name_with_type'];
+  public filtercustom = [this._data.fun_filter_texttoboole('khóa', 'lock')];
   public dataSource: any = new MatTableDataSource<any>();
-  private API = '/api/DMXaPhuong';
+  private API = '/DanhMuc/PhuongXa';
   protected tinhthanh: any[] = [];
   protected quanHuyen: any[] = [];
   public CtrlTinh: FormControl = new FormControl(null);
   public CtrlQuan: FormControl = new FormControl(null);
-  public fnmaptinh: Function = (data) => { return data.map(o => { return { id: o.MaTT, text: o.TenTT } }) };
-  public fnmapquan: Function = (data) => { return data.map(o => { return { id: o.MaQuanHuyen, text: o.TenQuanHuyen } }) };
+  public fnmaptinh: Function = (data) => { return data.map(o => { return { id: o.code, text: o.name } }) };
+  public fnmapquan: Function = (data) => { return data.map(o => { return { id: o.code, text: o.name } }) };
   public apiQuan: string;
-  private tinhid: any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   _isnull = isNull;
@@ -38,17 +35,18 @@ export class XaPhuongComponent implements OnInit {
 
   loaddata(idqh) {
     this.isLoading = true;
-    this._data.get(this.API + '/getbymaqh/' + idqh)
+    this._data.get(this.API + '/getbyquanhuyenid/' + idqh)
       .subscribe((res: any) => {
-        this.dataSource.data = res;
+        this.dataSource.data = res.data;
         this.isLoading = false;
       }, (error) => {
         this._data.handleError(error);
         this.isLoading = false;
       });
   }
+  
   opendialog(maQuanHuyen: any, id: any=null) {
-    this._dialog.open_dialog_create(XaPhuongCreateComponent, { MaQuanHuyen: maQuanHuyen, Id: id, nameTT: this.CtrlTinh.value.text, name: this.CtrlQuan.value.text }, () => {
+    this._dialog.open_dialog_create(PhuongXaCreateComponent, { MaQuanHuyen: maQuanHuyen, Id: id, nameTT: this.CtrlTinh.value.text, name: this.CtrlQuan.value.text }, () => {
       this.loaddata(maQuanHuyen);
     });
   }
@@ -66,13 +64,12 @@ export class XaPhuongComponent implements OnInit {
   changeTinh(e: FormControl) {
     this.CtrlTinh = e;
     if (this.CtrlTinh.value && this.CtrlTinh.value.id) {
-      this.apiQuan = '/api/dmquanhuyen/getbymatinhthanhlock/' + this.CtrlTinh.value.id;
+      this.apiQuan = '/danhmuc/quanhuyen/getbytinhthanhid/' + this.CtrlTinh.value.id;
       this.dataSource.data = [];
     }
     else {
       this.dataSource.data = [];
       this.apiQuan = '';
-      this.tinhid = null;
     }
   }
   changeQuan(e: FormControl) {

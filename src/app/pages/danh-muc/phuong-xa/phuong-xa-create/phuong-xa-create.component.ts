@@ -6,7 +6,7 @@ import { FormControl, Validators, FormGroup, FormGroupDirective, NgForm } from '
 import { isNullOrUndefined } from 'util';
 import { MatDialogRef } from '@angular/material';
 
-export class MyErrorStateMatcherXaPhuong implements ErrorStateMatcher {
+export class MyErrorStateMatcherPhuongXa implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
@@ -14,18 +14,18 @@ export class MyErrorStateMatcherXaPhuong implements ErrorStateMatcher {
 }
 
 @Component({
-  templateUrl: "./xa-phuong-create.component.html",
+  templateUrl: "./phuong-xa-create.component.html",
 })
-export class XaPhuongCreateComponent {
+export class PhuongXaCreateComponent {
   public isLoading: boolean = false;
   public issave: boolean = false;
-  private API = '/api/DMXaPhuong';
+  private API = '/api/DMPhuongXa';
   public formdata: FormGroup;
   private vali_const = ValidatorConstants;
   public const_data: any = {};
-  public matcher = new MyErrorStateMatcherXaPhuong();
+  public matcher = new MyErrorStateMatcherPhuongXa();
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-    private dialogRef: MatDialogRef<XaPhuongCreateComponent>,
+    private dialogRef: MatDialogRef<PhuongXaCreateComponent>,
     public _data: DataService
   ) {
     this.loaddata();

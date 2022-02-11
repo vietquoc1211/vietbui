@@ -52,7 +52,7 @@
                         <ng-container matColumnDef="ThaoTao">
                             <mat-header-cell class="control1_table" *matHeaderCellDef> Action </mat-header-cell>
                             <mat-cell class="control1_table" *matCellDef="let row">
-                                <button (click)="opendialog(row)" class="btn m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill m-btn--air" type="button" title="edit">
+                                <button (click)="opendialog(row._id)" class="btn m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill m-btn--air" type="button" title="edit">
                                     <mat-icon class="icon-table-up-down_">edit</mat-icon>
                                 </button>
                                 <button (click)="delete(row)" class="btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill m-btn--air" type="button" title="delete">

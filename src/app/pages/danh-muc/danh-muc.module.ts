@@ -8,9 +8,7 @@ import * as Material from '@angular/material';
 import * as _DanhMuc from './danh-muc-index';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { ScrollDispatchModule, ScrollingModule } from '@angular/cdk/scrolling';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SelectCustomModule } from 'src/app/_components/select-custom/select-custom.module';
@@ -66,8 +64,8 @@ import { AppDateAdapter, APP_DATE_FORMATS } from '../../_services/date.adapter.s
         _DanhMuc.TinhThanhCreateComponent,
         _DanhMuc.QuanHuyenComponent,
         _DanhMuc.QuanHuyenCreateComponent,
-        _DanhMuc.XaPhuongComponent,
-        _DanhMuc.XaPhuongCreateComponent,
+        _DanhMuc.PhuongXaComponent,
+        _DanhMuc.PhuongXaCreateComponent,
         _DanhMuc.TonGiaoComponent,
         _DanhMuc.TonGiaoCreateComponent,
     ],
@@ -76,7 +74,7 @@ import { AppDateAdapter, APP_DATE_FORMATS } from '../../_services/date.adapter.s
         _DanhMuc.NuocCreateComponent,
         _DanhMuc.TinhThanhCreateComponent,
         _DanhMuc.QuanHuyenCreateComponent,
-        _DanhMuc.XaPhuongCreateComponent,
+        _DanhMuc.PhuongXaCreateComponent,
         _DanhMuc.TonGiaoCreateComponent,
     ],
     providers: [
