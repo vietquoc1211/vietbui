@@ -59,8 +59,8 @@ export class LoginService {
         if(data!=null)
         {
             const appsetting=JSON.parse(data.appsetting);
-            SystemConstants.CoTamUng=appsetting.CoTamUng=="1"||false;
-            SystemConstants.CoKho=appsetting.CoKho=="1"||false;
+            // SystemConstants.CoTamUng=appsetting.CoTamUng=="1"||false;
+            // SystemConstants.CoKho=appsetting.CoKho=="1"||false;
         }
     }
 }

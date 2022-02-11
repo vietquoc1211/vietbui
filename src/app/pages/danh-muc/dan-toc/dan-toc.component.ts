@@ -10,11 +10,11 @@ import { DanTocCreateComponent } from './dan-toc-create/dan-toc-create.component
 })
 export class DanTocComponent implements OnInit {
   public isLoading = false;
-  public displayedColumns = ['DanTocID', 'TenDanToc', 'Lock', 'ThaoTao'];
-  public filterColumns = ['TenDanToc'];
-  public filtercustom = [this._data.fun_filter_texttoboole('khóa', 'Lock')];
+  public displayedColumns = ['code', 'name', 'lock', 'ThaoTao'];
+  public filterColumns = ['name'];
+  public filtercustom = [this._data.fun_filter_texttoboole('khóa', 'lock')];
   public dataSource: any = new MatTableDataSource<any>();
-  private API = '/api/DanToc';
+  private API = '/danhmuc/dantoc';
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -29,19 +29,21 @@ export class DanTocComponent implements OnInit {
     this.isLoading = true;
     this._data.get(this.API + '/getall')
       .subscribe((res: any) => {
-        this.dataSource.data = res;
+        this.dataSource.data = res.data;
         this.isLoading = false;
       }, (error) => {
         this._data.handleError(error);
         this.isLoading = false;
       });
   }
-  opendialog(ID: any=null) {
-    this._dialog.open_dialog_create(DanTocCreateComponent, { Id: ID }, () => this.loaddata());
+
+  opendialog(item) {
+    this._dialog.open_dialog_create(DanTocCreateComponent, { Id: item._id }, () => this.loaddata());
   }
+  
   delete(item) {
-    this._dialog.open_dialog_confirm_delete({ Title: 'Xóa dân tộc ' + item.TenDanToc }, () => {
-      this._data.post(this.API + '/delete/' + item.DanTocID)
+    this._dialog.open_dialog_confirm_delete({ Title: 'delete Ethnic:' + item.name }, () => {
+      this._data.delete(this.API + '/' + item._id)
         .subscribe((res: any) => {
           this._data.toastr_delete_success();
           this.loaddata();

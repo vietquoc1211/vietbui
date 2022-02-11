@@ -103,21 +103,21 @@
                     </mat-error>
                   </mat-form-field>
                   <select-custom class="col-sm-3" [Title]="'Tỉnh thành'" [Control]="formdata.controls['MaTinhThanh']"
-                    [Api]="'/api/dmtinhthanh/getselect'" (SelectChange)="changetinhthanh($event)"
+                    [Api]="'/DanhMuc/TinhThanh/getall'" (SelectChange)="changetinhthanh($event)"
                     [DefaultValue]="const_data.MaTinhThanh">
                     <ng-template #itemTemplate let-item="item">
                       {{ item.text }}
                     </ng-template>
                   </select-custom>
                   <select-custom class="col-sm-3" [Title]="'Quận huyện'" [Control]="formdata.controls['MaQuanHuyen']"
-                    [Api]="'/api/dmquanhuyen/getselect'" [FilterBefore]="beforeQH"
+                    [Api]="'/DanhMuc/QuanHuyen/getall'" [FilterBefore]="beforeQH"
                     [DefaultValue]="const_data.MaQuanHuyen" (SelectChange)="changequanhuyen($event)">
                     <ng-template #itemTemplate let-item="item">
                       {{ item.text }}
                     </ng-template>
                   </select-custom>
                   <select-custom [Title]="'Phường xã'" [Control]="formdata.controls['MaPhuongXa']" class="col-sm-3"
-                    [Api]="'/api/dmxaphuong/getselect'" [FilterBefore]="beforePX" [DefaultValue]="const_data.MaPhuongXa"
+                    [Api]="'/DanhMuc/XaPhuong/getall'" [FilterBefore]="beforePX" [DefaultValue]="const_data.MaPhuongXa"
                     (SelectChange)="changephuongxa($event)">
                     <ng-template #itemTemplate let-item="item">
                       {{ item.text }}

@@ -14,8 +14,5 @@ export class ValidatorConstants {
     public static ms_textlength = 'Độ dài chuỗi không hợp lệ';
     public static ms_mabn = '8 ký tự (0->9)';
     public static ms_gio = 'định dạng 00:00';
-    public static ms_ngay = 'định dạng dd/mm/yyyy';
-
-    public static v_lieutrinh = 'Liệu trình chưa đúng';
-    public static v_tronglieutrinh = 'Liệu trình không được trống';
+    public static ms_ngay = 'định dạng dd/mm/yyyy';dd
 }

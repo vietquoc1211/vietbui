@@ -13,7 +13,7 @@ import { MatDialogRef } from '@angular/material';
 export class DanTocCreateComponent {
   public isLoading: boolean = false;
   public issave: boolean = false;
-  private API = '/api/DanToc';
+  private API = '/danhmuc/dantoc';
   public formdata: FormGroup;
   private vali_const = ValidatorConstants;
   public const_data: any = {};
@@ -26,21 +26,24 @@ export class DanTocCreateComponent {
   }
   createform() {
     this.formdata = new FormGroup({
-      TenDanToc: new FormControl('', [Validators.required, Validators.maxLength(256)]),
-      Lock: new FormControl(false)
+      code: new FormControl('', [Validators.required, Validators.maxLength(2)]),
+      name: new FormControl('', [Validators.required, Validators.maxLength(256)]),
+      lock: new FormControl(false)
     });
   }
   setvalueform(values) {
-    this.formdata.controls['TenDanToc'].setValue(values.TenDanToc);
-    this.formdata.controls['Lock'].setValue(values.Lock);
+    this.formdata.controls['code'].setValue(values.code);
+    this.formdata.controls['name'].setValue(values.name);
+    this.formdata.controls['lock'].setValue(values.lock);
   }
   loaddata() {
     this.createform();
     if (!isNullOrUndefined(this.data.Id)) {
       this.isLoading = true;
-      this._data.get(this.API + '/getbyid/' + this.data.Id)
+      var datapost = JSON.stringify({"id":""+this.data.Id+""});
+      this._data.post(this.API + '/getbyid',datapost)
         .subscribe((res: any) => {
-          this.const_data = res;
+          this.const_data = res.data;
           this.setvalueform(this.const_data);
           this.isLoading = false;
         }, (error) => {
@@ -54,10 +57,13 @@ export class DanTocCreateComponent {
   savedata(values) {
     if (this.formdata.invalid) { this._data.toastr_validator(); return; }
     this.issave = true;
-    this.const_data.TenDanToc = values.TenDanToc;
-    this.const_data.Lock = values.Lock;
+    this.const_data.code = values.code;
+    this.const_data.name = values.name;
+    this.const_data.lock = values.lock;
     let isadd = isNullOrUndefined(this.data.Id);
-    this._data.post(this.API + (isadd ? '/add' : '/update'), this.const_data)
+    if(isadd)
+    {
+      this._data.post(this.API + '/add', this.const_data)
       .subscribe((res: any) => {
         if (res.Loi) {
           this._data.toastr_duplicate_error();
@@ -72,5 +78,23 @@ export class DanTocCreateComponent {
         this._data.handleError(error);
         this.issave = false;
       });
+    }
+    else {
+      this._data.put(this.API + '/' + this.const_data._id, this.const_data)
+      .subscribe((res: any) => {
+        if (res.Loi) {
+          this._data.toastr_duplicate_error();
+          this.issave = false;
+          this.const_data = []
+          return;
+        }
+        this.issave = false;
+        this._data.toastr_save_success(isadd);
+        this.dialogRef.close(true);
+      }, (error) => {
+        this._data.handleError(error);
+        this.issave = false;
+      });
+    }
   }
 }

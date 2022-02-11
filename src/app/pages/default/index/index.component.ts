@@ -24,12 +24,12 @@ export class IndexComponent implements OnInit, AfterViewInit {
     loaddata() {
         this._data.get(this.API + 'getmenupage')
             .subscribe((res: any) => {
-                this.sys_const.dashboard.forEach(item => {
-                    res.forEach(element => {
-                        if (item.url == element.Url)
-                            this.data_index.push(item);
-                    });
-                });
+                // this.sys_const.dashboard.forEach(item => {
+                //     res.forEach(element => {
+                //         if (item.url == element.Url)
+                //             this.data_index.push(item);
+                //     });
+                // });
             });
     }
 

@@ -1,5 +1,5 @@
 <form class="m-form" #form="ngForm" [formGroup]="formdata">
-    <h2 mat-dialog-title>{{const_data.DanTocID?'Sửa dân tộc: '+const_data.TenDanToc:'Thêm mới dân tộc'}}</h2>
+    <h2 mat-dialog-title>{{const_data.Id?'Edit Ethnic : '+const_data.name:'Add new Ethnic'}}</h2>
     <mat-dialog-content class="mat-typography">
         <div class="content-dialog">
             <div *ngIf="isLoading" class="dialog-loading-shade">
@@ -7,24 +7,31 @@
             </div>
             <div class="m-portlet__body">
                 <mat-form-field class="example-full-width">
-                    <input formControlName="TenDanToc" matInput placeholder="Tên dân tộc" required autocomplete="off">
-                    <mat-error *ngIf="formdata.controls['TenDanToc'].errors?.required">{{vali_const.ms_required}}
+                    <input formControlName="code" matInput placeholder="mã dân tộc" required autocomplete="off">
+                    <mat-error *ngIf="formdata.controls['code'].errors?.required">{{vali_const.ms_required}}
                     </mat-error>
-                    <mat-error *ngIf="formdata.controls['TenDanToc'].errors?.maxlength">{{vali_const.ms_textlength}}
+                    <mat-error *ngIf="formdata.controls['code'].errors?.maxlength">{{vali_const.ms_textlength}}
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <input formControlName="name" matInput placeholder="Tên dân tộc" required autocomplete="off">
+                    <mat-error *ngIf="formdata.controls['name'].errors?.required">{{vali_const.ms_required}}
+                    </mat-error>
+                    <mat-error *ngIf="formdata.controls['name'].errors?.maxlength">{{vali_const.ms_textlength}}
                     </mat-error>
                 </mat-form-field>
                 <p>
-                    <mat-checkbox formControlName="Lock">Khóa hoạt động</mat-checkbox>
+                    <mat-checkbox formControlName="lock">Lock Ethnic</mat-checkbox>
                 </p>
             </div>
         </div>
     </mat-dialog-content>
     <mat-dialog-actions align="end">
-        <button mat-raised-button mat-dialog-close><i class="la la-close"></i> Thoát</button>
+        <button mat-raised-button mat-dialog-close><i class="la la-close"></i> Exit</button>
         <button mat-raised-button [disabled]="isLoading" type="button" (click)="loaddata(); form.resetForm()"
             color="accent">
-            <i class="la la-refresh"></i> Tải lại</button>
+            <i class="la la-refresh"></i> Reload</button>
         <button mat-raised-button [disabled]="isLoading" [loader]="issave" type="submit"
-            (click)="savedata(formdata.value)" color="primary"><i class="la la-save"></i> Lưu</button>
+            (click)="savedata(formdata.value)" color="primary"><i class="la la-save"></i> Save</button>
     </mat-dialog-actions>
 </form>

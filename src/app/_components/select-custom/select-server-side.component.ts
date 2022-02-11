@@ -11,7 +11,7 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
           <mat-form-field>
             <mat-select #Ctrlselect class="icon-autocomplete-left" [formControl]="Control" (selectionChange)="selectionChange($event.value)" (openedChange)="open($event)" (closedChange)="open($event)" [placeholder]="Title">
               <mat-option>
-                <ngx-mat-select-search [formControl]="FilterCtrl" [placeholderLabel]="'Tìm kiếm '+ Title.toLowerCase()" [noEntriesFoundLabel]="'Không tìm thấy dòng nào!'" [searching]="searching">
+                <ngx-mat-select-search [formControl]="FilterCtrl" [placeholderLabel]="'Search '+ Title.toLowerCase()" [noEntriesFoundLabel]="'Không tìm thấy dòng nào!'" [searching]="searching">
                   <mat-icon ngxMatSelectSearchClear>close</mat-icon>
                 </ngx-mat-select-search>
               </mat-option> 

@@ -18,7 +18,7 @@ import { htmlAstToRender3Ast } from '@angular/compiler/src/render3/r3_template_t
     <mat-select-trigger *ngIf="Label">
       <ng-container *ngTemplateOutlet="labelTemplate; context: {value:Control.value}"></ng-container>
     </mat-select-trigger>
-    <ngx-mat-select-search *ngIf="!HideSearch" [formControl]="FilterCtrl" class="filterselect" [placeholderLabel]="'Tìm kiếm '+ Title.toLowerCase()" [noEntriesFoundLabel]="'Không tìm thấy dòng nào!'">
+    <ngx-mat-select-search *ngIf="!HideSearch" [formControl]="FilterCtrl" class="filterselect" [placeholderLabel]="'Search '+ Title.toLowerCase()" [noEntriesFoundLabel]="'Không tìm thấy dòng nào!'">
       <mat-icon ngxMatSelectSearchClear>close</mat-icon>
     </ngx-mat-select-search>
     <ng-container *ngIf="!Viewport">
@@ -53,7 +53,7 @@ export class SelectCustomComponent implements OnInit, OnDestroy {
 * @SelectChange sự kiện selected
 * @Control là control của form
 * @fnMap Map dữ liệu cho datasource : datasource = (data):array => {data.map(o =>{return {id: o.LoaiThuocID,text:o.TenLoai}})}
-* @fnFilter hàm tìm kiếm nếu không có sẻ tìm theo 'text', fnFilter=(item:any,search:string):boolean=>{return item.text.toLowerCase().indexOf(search) > -1}
+* @fnFilter hàm Search nếu không có sẻ tìm theo 'text', fnFilter=(item:any,search:string):boolean=>{return item.text.toLowerCase().indexOf(search) > -1}
 * @FilterBefore hàm lọc dữ liệu theo điều kiện
 * @All hiển thị option All trong khung select : Nếu = true --> hiển thị All ? Không hiển thị All
 * @HideSearch Ẩn search
