@@ -37,7 +37,7 @@ export class DanTocComponent implements OnInit {
       });
   }
 
-  opendialog(item) {
+  opendialog(item: any = null) {
     this._dialog.open_dialog_create(DanTocCreateComponent, { Id: item._id }, () => this.loaddata());
   }
   
